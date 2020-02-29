@@ -6,12 +6,12 @@ Aim to port spacemacs features (defaults keybindings and layers) to doom, and pr
 ~git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs~
 
 
-** Enabled necessary modules in ~init.el~
+** Enable necessary modules in ~init.el~
 Make sure enable the necessary modules in ~init.el.
 
 At lease org, gist, pdf, and lookup
 
-** Added missing pacakges in ~packages.el~
+** Add missing pacakges in ~packages.el~
 And install the missing packages in ~packages.el~
 
 ~(package! nov)~
