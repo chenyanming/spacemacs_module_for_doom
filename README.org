@@ -1,0 +1,19 @@
+* spacemacs_to_doom
+
+Aim to port spacemacs features (defaults keybinding &amp; layers) to doom, and provides a spacemacs module for doom.
+
+** Clone the module
+~git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs~
+
+** Load the module in ~config.el~
+~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~
+
+Enjoy~
+
+** Current status
+1. Default spacemacs leader keybindings.
+2. All org layer keybindings.
+3. Github layer keybindings.
+4. PDF layer keybindings.
+5. epub layer keybindings.
+5. dash layer keybindings.

@@ -1,0 +1,20 @@
+#### Description :octocat:
+<<DESCRIPTION OF THE PROBLEM>>
+
+#### Reproduction guide :beetle:
+- Start Emacs
+- <<REPRODUCTION STEPS>>
+
+*Observed behaviour:* :eyes: :broken_heart:
+<<DESCRIPTION OF THE OBSERVED BEHAVIOUR>>
+
+*Expected behaviour:* :heart: :smile:
+<<DESCRIPTION OF THE EXPECTED BEHAVIOUR>>
+
+(%LAST_KEYS%)
+%SYSTEM_INFO%
+
+#### Backtrace :paw_prints:
+```
+%BACKTRACE%
+```

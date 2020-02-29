@@ -1,0 +1,36 @@
+Press [TAB] or [J] to move to next button.
+
+Press [Shift-TAB] or [K] to move to previous button.
+
+Press [c] to jump to org-agenda list if it is enabled.
+
+Press [b] to jump to bookmark list if it is enabled.
+
+Press [d] to jump to org-todo list if it is enabled.
+
+Press [e] to jump to error list.
+
+Press [m] to jump to the top menu.
+
+Press [o] to jump to any link or button.
+
+Press [p] to jump to project list if it is enabled.
+
+Press [r] to jump to recent file list if it is enabled.
+
+Press [w] to jump to warning list.
+
+Press [SPC] (in Vim editing style) or [Alt-m] (in Emacs editing style) to access
+Spacemacs commands (will list only the Vim style ones for the rest of this
+help).
+
+Press [SPC f e d] (or [Alt-m f e d] in Emacs style) to access .spacemacs file.
+
+Press [SPC h SPC] to access a list of documentation and supported layers. You
+can type anything to narrow to a specific feature i.e. "python" for Python
+layer. There are multiple lists and you can press [Ctrl-o] to switch between
+them.
+
+When reading a document, you can use [SPC s j] to jump to a heading.
+
+Please consult Spacemacs documentation from [SPC h SPC] for more details.
