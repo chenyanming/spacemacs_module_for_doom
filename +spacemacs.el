@@ -14,6 +14,13 @@
 (setq spacemacs-cache-directory doom-cache-dir)
 (setq which-key-idle-delay 0.4)
 (setq which-key-idle-secondary-delay 0.1)
+
+;; Dot file location - SPC-f-e-d
+(defun dotspacemacs/location ()
+  ;; (doom/find-file-in-private-config)
+  (doom/goto-private-config-file)
+  )
+
 ;; (setq dotspacemacs-persistent-server t)
 (load! "~/.doom.d/modules/spacemacs/core/core-funcs.el")
 ; (load! "~/.doom.d/modules/spacemacs/core/core-spacemacs-buffer.el")
