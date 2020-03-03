@@ -218,4 +218,8 @@ defer call using `spacemacs-post-user-config-hook'."
 (epub/init-nov)
 (dash/init-dash-at-point)
 
+
+
+(setq hydra-hint-display-type 'message) ;; set "message" for transient state, since "lv" is not work well on doom
+;; (setq hydra--work-around-dedicated nil)
 (spacemacs-navigation/init-auto-highlight-symbol)
