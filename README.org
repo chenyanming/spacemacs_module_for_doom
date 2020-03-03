@@ -21,6 +21,10 @@ And install the missing packages in ~packages.el~
 ** Run ~./emacs.d/bin/doom sync~
 Then sync the doom.
 
+*Please notice*:
+If you want to keep sync with my commits, every time you do git pull, you should better run ~./emacs.d/bin/doom
+sync~ again, in case the ~packages.el~ is updated.
+
 ** Restart Emacs
 Finally restart emacs~
 

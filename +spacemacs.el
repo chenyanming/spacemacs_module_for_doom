@@ -29,6 +29,7 @@
 (load! "~/.doom.d/modules/spacemacs/core/core-keybindings.el")
 (load! "~/.doom.d/modules/spacemacs/core/core-transient-state.el")
 (load! "~/.doom.d/modules/spacemacs/core/core-toggle.el")
+;; (load! "~/.doom.d/modules/spacemacs/core/core-hooks.el")
 ;; (load! "~/.doom.d/modules/spacemacs/core/core-fonts-support.el")
 ;; TODO: evilified-state-evilify-map seems to have conflict with the doom
 ;; setting, like the leader key setting.
@@ -108,14 +109,16 @@ defer call using `spacemacs-post-user-config-hook'."
 (load! "~/.doom.d/modules/spacemacs/layer/pdf/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/epub/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/dash/packages.el")
-(load! "~/.doom.d/modules/spacemacs/layer/spacemacs-defaults/keybindings.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-defaults/funcs.el")
+(load! "~/.doom.d/modules/spacemacs/layer/spacemacs-defaults/keybindings.el")
 ;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/packages.el")
 ;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/keybindings.el")
 ;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/funcs.el")
 ;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/config.el")
-(load! "~/.doom.d/modules/spacemacs/layer/github/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/github/funcs.el")
+(load! "~/.doom.d/modules/spacemacs/layer/github/packages.el")
+(load! "~/.doom.d/modules/spacemacs/layer/spacemacs-navigation/funcs.el")
+(load! "~/.doom.d/modules/spacemacs/layer/spacemacs-navigation/packages.el")
 
 
 
@@ -214,3 +217,5 @@ defer call using `spacemacs-post-user-config-hook'."
 (pdf/init-pdf-tools)
 (epub/init-nov)
 (dash/init-dash-at-point)
+
+(spacemacs-navigation/init-auto-highlight-symbol)
