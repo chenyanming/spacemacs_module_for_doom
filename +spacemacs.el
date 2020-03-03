@@ -40,6 +40,10 @@
 ;; (require 'core-funcs)
 ;; (require 'core-keybindings)
 
+(defvar spacemacs-post-user-config-hook nil
+  "Hook run after dotspacemacs/user-config")
+(defvar spacemacs-post-user-config-hook-run nil
+  "Whether `spacemacs-post-user-config-hook' has been run")
 (defvar dotspacemacs-show-transient-state-title t
   "If non nil show the titles of transient states.")
 (defvar dotspacemacs-show-transient-state-color-guide t
