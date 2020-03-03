@@ -1,6 +1,6 @@
 * spacemacs_to_doom
 
-Aim to port spacemacs features (defaults keybindings and layers) to doom, and provides a spacemacs module for doom.
+Aim to port spacemacs features (keybindings, transient state, layers etc) to doom, and provides a spacemacs module for doom.
 
 ** Clone the module
 ~git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs~
@@ -37,3 +37,4 @@ Enjoy~
 4. PDF layer keybindings.
 5. epub layer keybindings.
 5. dash layer keybindings.
+6. Some transient states.
