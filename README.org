@@ -13,8 +13,20 @@ At lease org, gist, pdf, and lookup
 ** Add missing pacakges in ~packages.el~
 And install the missing packages in ~packages.el~
 
-~(package! nov)~
+#+BEGIN_SRC emacs-lisp
+(package! nov) ;; for epub
+(package! ace-link) ;; for spacemacs-navigation
+(package! ace-window) ;; for spacemacs-navigation
+(package! auto-highlight-symbol) ;; for spacemacs-navigation
+(package! centered-cursor-mode) ;; for spacemacs-navigation
+(package! golden-ratio) ;; for spacemacs-navigation
+(package! open-junk-file) ;; for spacemacs-navigation
+(package! paradox) ;; for spacemacs-navigation
+(package! restart-emacs) ;; for spacemacs-navigation
+(package! symbol-overlay) ;; for spacemacs-navigation
+(package! winum) ;; for spacemacs-navigation
 
+#+END_SRC
 ** Load the module in ~config.el~
 ~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~
 
