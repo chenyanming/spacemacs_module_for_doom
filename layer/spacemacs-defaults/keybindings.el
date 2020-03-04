@@ -549,10 +549,10 @@ respond to this toggle."
   :evil-leader "Tm")
 ;; quit -----------------------------------------------------------------------
 (map! :leader :n
-      "qs" 'spacemacs/save-buffers-kill-emacs
-      "qq" 'spacemacs/prompt-kill-emacs
-      "qQ" 'spacemacs/kill-emacs
-      "qf" 'spacemacs/frame-killer)
+      "qs" 'doom/quicksave-session ; original: spacemacs/save-buffers-kill-emacs
+      "qq" 'save-buffers-kill-terminal ; original: spacemacs/prompt-kill-emacs
+      "qQ" 'evil-quit-all-with-error-code ; original: spacemacs/kill-emacs
+      "qf" 'doom/delete-frame) ; original: spacemacs/frame-killer)
 ;; ;; timeclock ------------------------------------------------------------------
 (map! :leader
       "t t" nil)
