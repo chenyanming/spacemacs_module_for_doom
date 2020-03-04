@@ -1,6 +1,5 @@
 ;;; ~/.doom.d/+spacemacs.el -*- lexical-binding: t; -*-
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                        ; Setup & load spacmeacs core packages ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -62,14 +61,11 @@ defer call using `spacemacs-post-user-config-hook'."
                                ; redifine the spacemcas/set-leader-keys macro ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
 (defmacro spacemacs/set-leader-keys (&rest rest)
   ;; (setq doom--map-fn 'doom--define-leader-key)
   ;; (doom--map-keyword-to-states :n)
   ;; (setq doom--map-state '(:n t))
   ;; (message rest)
-
   (doom--map-process (cons :leader (cons :n rest) ))
   ;; (doom--map-process (cons '(:n) 'rest))
   ;; (doom--map-process (apply 'concat :n  rest))
@@ -89,6 +85,7 @@ defer call using `spacemacs-post-user-config-hook'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;  unmap the doom original key prefix ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (map! :leader
       "gg" nil
       "bN" nil
@@ -101,6 +98,7 @@ defer call using `spacemacs-post-user-config-hook'."
       "tt" nil
       "wc" nil
       "x" nil)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              ;  load the modified spacemacs layers packages   ;
@@ -143,7 +141,6 @@ defer call using `spacemacs-post-user-config-hook'."
                                         ;         initialise layers          ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 ; (spacemacs-defaults/init-abbrev)
 ; (spacemacs-defaults/init-archive-mode)
 ; (spacemacs-defaults/init-bookmark)
@@ -174,9 +171,6 @@ defer call using `spacemacs-post-user-config-hook'."
 ; (spacemacs-defaults/init-whitespace)
 ; (spacemacs-defaults/init-winner)
 ;; (spacemacs-defaults/init-zone)
-
-
-
 
 (org/init-org)
 ;; (org/post-init-org)
@@ -223,3 +217,4 @@ defer call using `spacemacs-post-user-config-hook'."
 (setq hydra-hint-display-type 'message) ;; set "message" for transient state, since "lv" is not work well on doom
 ;; (setq hydra--work-around-dedicated nil)
 (spacemacs-navigation/init-auto-highlight-symbol)
+(spacemacs-navigation/init-symbol-overlay)
