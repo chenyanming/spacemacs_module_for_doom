@@ -214,7 +214,8 @@ defer call using `spacemacs-post-user-config-hook'."
 
 
 
-(setq hydra-hint-display-type 'message) ;; set "message" for transient state, since "lv" is not work well on doom
+(setq hydra--work-around-dedicated nil) ;; help lv to work https://github.com/abo-abo/hydra/issues/329
+(setq hydra-hint-display-type 'lv) ;; set "message" for transient state, since "lv" is not work well on doom
 ;; (setq hydra--work-around-dedicated nil)
 (spacemacs-navigation/init-auto-highlight-symbol)
 (spacemacs-navigation/init-symbol-overlay)
