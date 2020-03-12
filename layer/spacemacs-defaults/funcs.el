@@ -1515,8 +1515,9 @@ if prefix argument ARG is given, switch to it in an other, possibly new window."
     (if arg
         (switch-to-buffer-other-window (current-buffer))
       (switch-to-buffer (current-buffer)))
-    (when (evil-evilified-state-p)
-      (evil-normal-state))))
+    ;; (when (evil-evilified-state-p)
+    ;;   (evil-normal-state))
+    ))
 
 (defun spacemacs/close-compilation-window ()
   "Close the window containing the '*compilation*' buffer."
