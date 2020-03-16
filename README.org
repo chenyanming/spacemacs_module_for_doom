@@ -10,6 +10,13 @@ Make sure enable the necessary modules in ~init.el~.
 
 At lease org, gist, pdf, and lookup
 
+In order to use the windows transient state properly, please add ~+numbers~ for
+~windows-select~ module.
+#+BEGIN_SRC emacs-lisp
+(window-select     ; visually switch windows
+        +numbers)
+#+END_SRC
+
 ** Add missing pacakges in ~packages.el~
 And install the missing packages in ~packages.el~
 
@@ -17,6 +24,10 @@ And install the missing packages in ~packages.el~
 (package! nov) ;; for epub
 (package! auto-highlight-symbol) ;; for spacemacs-navigation
 #+END_SRC
+** Adjust ~+spacemacs~ based on your need
+Since this package only simply load the necessary layer files and call their init functions, you can comment out
+them in ~+spacemacs.el~ if necessary.
+
 ** Load the module in ~config.el~
 ~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~
 
@@ -39,4 +50,7 @@ Enjoy~
 4. PDF layer keybindings.
 5. epub layer keybindings.
 5. dash layer keybindings.
-6. Some transient states.
+6. Some transient states:
+   - windows transient state: ~SPC-w-.~
+   - symbol overlay transient state: ~SPC-s-o~
+   - symbol highlight transient state: ~SPC-s-h~
