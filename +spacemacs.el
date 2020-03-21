@@ -232,9 +232,9 @@ Useful for making the home buffer the only visible buffer in the frame."
 ;; "message" is flickering when SPC-w.-[or]
 ;;(setq hydra-hint-display-type 'message)
 ;; since "lv" is not work well on doom even set work around to nil, SPC-l-n or p will create relundant windows
-;;(setq hydra-hint-display-type 'lv)
+(setq hydra-hint-display-type 'lv)
 ;; posframe seems great
-(setq hydra-hint-display-type 'posframe)
+;;(setq hydra-hint-display-type 'posframe)
 ;; (setq hydra--work-around-dedicated nil)
 (spacemacs-navigation/init-auto-highlight-symbol)
 (spacemacs-navigation/init-symbol-overlay)
