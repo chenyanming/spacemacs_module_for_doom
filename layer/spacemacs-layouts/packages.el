@@ -211,6 +211,7 @@
         ("w" spacemacs/workspaces-transient-state/body :exit t)
         ("q" (lambda() (interactive) (setq hydra--work-around-dedicated nil)) :exit t)
         ("C-g" (lambda() (interactive) (setq hydra--work-around-dedicated nil)) :exit t)
+        ("<escape>" (lambda() (interactive) (setq hydra--work-around-dedicated nil)) :exit t)
         ("x" spacemacs/layouts-ts-kill)
         ("X" spacemacs/layouts-ts-kill-other :exit t))
       (spacemacs/set-leader-keys "l" '(lambda() (interactive) (setq hydra--work-around-dedicated t) (spacemacs/layouts-transient-state/body)))
