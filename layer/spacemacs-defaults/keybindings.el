@@ -819,13 +819,14 @@ Select: _a_ _h_ _j_ _k_ _l_ _w_ _0_.._9_ Move: _H_ _J_ _K_ _L_ _r_ _R_ Split: _s
           ;;     ;; %s^^^^^^^^^^^^^^^^^ (above) to keep the following key aligned
           ;;     "[_g_] golden-ratio "
           ;;   "^^                 ")
-              "[_g_] golden-ratio "))
+          "[_g_] golden-ratio "))
+          ;;"^^                 "))
 
 (spacemacs|define-transient-state window
   :title "Window Transient State"
-  ;; :hint-is-doc t
-  ;; :dynamic-hint (spacemacs//window-ts-hint)
-  :doc "\n Select: _a_ _h_ _j_ _k_ _l_ _w_ _0_.._9_ Move: _H_ _J_ _K_ _L_ _r_ _R_ Split: _s_ _v_ Resize: _[_ _]_ _{_ _}_ _m_ _|_ ___"
+  :hint-is-doc t
+  :dynamic-hint (spacemacs//window-ts-hint)
+  ;;:doc "\n Select: _a_ _h_ _j_ _k_ _l_ _w_ _0_.._9_ Move: _H_ _J_ _K_ _L_ _r_ _R_ Split: _s_ _v_ Resize: _[_ _]_ _{_ _}_ _m_ _|_ ___"
   :bindings
   ("?" spacemacs//window-ts-toggle-hint)
   ;; Select
@@ -876,6 +877,7 @@ Select: _a_ _h_ _j_ _k_ _l_ _w_ _0_.._9_ Move: _H_ _J_ _K_ _L_ _r_ _R_ Split: _s
   ("]" spacemacs/enlarge-window-horizontally)
   ("{" spacemacs/shrink-window)
   ("}" spacemacs/enlarge-window)
+  ("g" golden-ratio)
   ;; Other
   ("d" delete-window)
   ("D" delete-other-windows)

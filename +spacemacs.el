@@ -117,6 +117,20 @@ defer call using `spacemacs-post-user-config-hook'."
 (load! "~/.doom.d/modules/spacemacs/layer/github/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-navigation/funcs.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-navigation/packages.el")
+(load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/packages.el")
+(load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/funcs.el")
+(defvar dotspacemacs-default-layout-name "Default"
+  "Name of the default layout.")
+(defvar dotspacemacs-auto-generate-layout-names nil
+  "If non-nil, auto-generate layout name when creating new layouts.
+Only has effect when using the \"jump to layout by number\" commands.")
+(defun spacemacs/home-delete-other-windows ()
+  "Open home Spacemacs buffer and delete other windows.
+Useful for making the home buffer the only visible buffer in the frame."
+  (interactive)
+  ;;(+doom-dashboard/open (selected-frame))
+  (delete-other-windows))
+(load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/config.el")
 
 
 
@@ -214,8 +228,12 @@ defer call using `spacemacs-post-user-config-hook'."
 
 
 
-(setq hydra--work-around-dedicated nil) ;; help lv to work https://github.com/abo-abo/hydra/issues/329
-(setq hydra-hint-display-type 'lv) ;; set "message" for transient state, since "lv" is not work well on doom
+(setq hydra--work-around-dedicated nil) ;; help lv to work https://github.com/abo-abo/hydra/issues/329, even setup this, lv can still has bug with SPC-l-n or SPC-l-p
+(setq hydra-hint-display-type 'message) ;; set "message" for transient state, since "lv" is not work well on doom
 ;; (setq hydra--work-around-dedicated nil)
 (spacemacs-navigation/init-auto-highlight-symbol)
 (spacemacs-navigation/init-symbol-overlay)
+
+
+(spacemacs-layouts/init-eyebrowse)
+(spacemacs-layouts/init-persp-mode)

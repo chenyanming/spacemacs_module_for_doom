@@ -88,7 +88,8 @@ effect if called after that point."
 (defmacro spacemacs|transient-state-format-hint (name var hint)
   "Format HINT and store the result in VAR for transient state NAME."
   (declare (indent 1))
-  `(add-hook 'spacemacs-post-user-config-hook
+  ;; `(add-hook 'spacemacs-post-user-config-hook
+  `(add-hook 'doom-after-init-modules-hook
              (lambda ()
                (let* ((props-var ,(spacemacs//transient-state-props-var-name
                                    name))

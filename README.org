@@ -8,7 +8,7 @@ Aim to port spacemacs features (keybindings, transient state, layers etc) to doo
 ** Enable necessary modules in ~init.el~
 Make sure enable the necessary modules in ~init.el~.
 
-At lease org, gist, pdf, and lookup
+At lease org, gist, pdf, lookup, and workspaces
 
 In order to use the windows transient state properly, please add ~+numbers~ for
 ~windows-select~ module.
@@ -23,6 +23,7 @@ And install the missing packages in ~packages.el~
 #+BEGIN_SRC emacs-lisp
 (package! nov) ;; for epub
 (package! auto-highlight-symbol) ;; for spacemacs-navigation
+(package! eyebrowse) ;; for spacemacs-layouts
 #+END_SRC
 ** Adjust ~+spacemacs~ based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
@@ -58,3 +59,5 @@ Enjoy~
    - Error Transient State: ~SPC-e-.~
    - Font Scaling Transient State: ~SPC-z-x~
    - Frame Transparency Transient State: ~SPC-T-T~
+   - Layouts Transient State: ~SPC-l~
+   - Workspaces Transient State: ~SPC-l-w~
