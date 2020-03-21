@@ -131,6 +131,7 @@ Useful for making the home buffer the only visible buffer in the frame."
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/funcs.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/config.el")
+(load! "~/.doom.d/modules/spacemacs/layer/bm/packages.el")
 
 
 
@@ -242,3 +243,4 @@ Useful for making the home buffer the only visible buffer in the frame."
 
 (spacemacs-layouts/init-eyebrowse)
 (spacemacs-layouts/init-persp-mode)
+(bm/init-bm)

@@ -21,9 +21,10 @@ In order to use the windows transient state properly, please add ~+numbers~ for
 And install the missing packages in ~packages.el~
 
 #+BEGIN_SRC emacs-lisp
-(package! nov) ;; for epub
+(package! nov) ;; for epub layer
 (package! auto-highlight-symbol) ;; for spacemacs-navigation
 (package! eyebrowse) ;; for spacemacs-layouts
+(package! bm) ;; for bm layer
 #+END_SRC
 ** Adjust ~+spacemacs~ based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
@@ -69,3 +70,4 @@ Enjoy~
    - Frame Transparency Transient State: ~SPC-T-T~
    - Layouts Transient State: ~SPC-l~
    - Workspaces Transient State: ~SPC-l-w~
+   - BM Transient State: ~SPC-a-b~
