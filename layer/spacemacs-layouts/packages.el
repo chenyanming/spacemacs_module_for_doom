@@ -40,6 +40,7 @@
  [_l_]^^^^        layouts TS")
 
       (spacemacs|define-transient-state workspaces
+        :on-exit (setq hydra--work-around-dedicated nil)
         :title "Workspaces Transient State"
         :hint-is-doc t
         :dynamic-hint (spacemacs//workspaces-ts-hint)

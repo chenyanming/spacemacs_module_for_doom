@@ -200,9 +200,9 @@ ask the user if a new layout should be created."
 
 (defun spacemacs/layouts-ts-close-other ()
   (interactive)
-  (cond ((configuration-layer/layer-used-p 'helm)
+  (cond ((featurep! :completion helm)
          (spacemacs/helm-persp-close))
-        ((configuration-layer/layer-used-p 'ivy)
+        ((featurep! :completion ivy)
          (spacemacs/ivy-spacemacs-layout-close-other)))
   (spacemacs/layouts-transient-state/body))
 

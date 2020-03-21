@@ -80,6 +80,17 @@ defer call using `spacemacs-post-user-config-hook'."
 ;; (spacemacs/set-leader-keys
 ;; (map! :leader :n )
 
+(defvar dotspacemacs-default-layout-name "Default"
+  "Name of the default layout.")
+(defvar dotspacemacs-auto-generate-layout-names nil
+  "If non-nil, auto-generate layout name when creating new layouts.
+Only has effect when using the \"jump to layout by number\" commands.")
+(defun spacemacs/home-delete-other-windows ()
+  "Open home Spacemacs buffer and delete other windows.
+Useful for making the home buffer the only visible buffer in the frame."
+  (interactive)
+  (+doom-dashboard/open (selected-frame))
+  (delete-other-windows))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -119,17 +130,6 @@ defer call using `spacemacs-post-user-config-hook'."
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-navigation/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/funcs.el")
-(defvar dotspacemacs-default-layout-name "Default"
-  "Name of the default layout.")
-(defvar dotspacemacs-auto-generate-layout-names nil
-  "If non-nil, auto-generate layout name when creating new layouts.
-Only has effect when using the \"jump to layout by number\" commands.")
-(defun spacemacs/home-delete-other-windows ()
-  "Open home Spacemacs buffer and delete other windows.
-Useful for making the home buffer the only visible buffer in the frame."
-  (interactive)
-  (+doom-dashboard/open (selected-frame))
-  (delete-other-windows))
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/config.el")
 
 
