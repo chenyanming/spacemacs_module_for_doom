@@ -128,7 +128,7 @@ Only has effect when using the \"jump to layout by number\" commands.")
   "Open home Spacemacs buffer and delete other windows.
 Useful for making the home buffer the only visible buffer in the frame."
   (interactive)
-  ;;(+doom-dashboard/open (selected-frame))
+  (+doom-dashboard/open (selected-frame))
   (delete-other-windows))
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/config.el")
 
@@ -229,7 +229,12 @@ Useful for making the home buffer the only visible buffer in the frame."
 
 
 (setq hydra--work-around-dedicated nil) ;; help lv to work https://github.com/abo-abo/hydra/issues/329, even setup this, lv can still has bug with SPC-l-n or SPC-l-p
-(setq hydra-hint-display-type 'message) ;; set "message" for transient state, since "lv" is not work well on doom
+;; "message" is flickering when SPC-w.-[or]
+;;(setq hydra-hint-display-type 'message)
+;; since "lv" is not work well on doom even set work around to nil, SPC-l-n or p will create relundant windows
+;;(setq hydra-hint-display-type 'lv)
+;; posframe seems great
+(setq hydra-hint-display-type 'posframe)
 ;; (setq hydra--work-around-dedicated nil)
 (spacemacs-navigation/init-auto-highlight-symbol)
 (spacemacs-navigation/init-symbol-overlay)
