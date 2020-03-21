@@ -38,6 +38,14 @@ Then sync the doom.
 *Please notice*:
 If you want to keep sync with my commits, every time you do git pull, you should better run ~./emacs.d/bin/doom
 sync~ again, in case the ~packages.el~ is updated.
+** Notes on transient states
+Spacemacs's transient states are based on ~hydra~, while it seems has some
+problems with doom. I am trying to fix it.
+You can choose ~message~, ~lv~, or ~posframe~ on ~+spacemacs.el~
+e.g. to choose ~posframe~:
+#+BEGIN_SRC emacs-lisp
+(setq hydra-hint-display-type 'posframe)
+#+END_SRC
 
 ** Restart Emacs
 Finally restart emacs~
