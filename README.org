@@ -71,3 +71,4 @@ Enjoy~
    - Layouts Transient State: ~SPC-l~
    - Workspaces Transient State: ~SPC-l-w~
    - BM Transient State: ~SPC-a-b~
+   - VCS Transient State: ~SPC-g-.~
