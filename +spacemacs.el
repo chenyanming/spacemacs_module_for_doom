@@ -134,6 +134,7 @@ Useful for making the home buffer the only visible buffer in the frame."
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-layouts/config.el")
 (load! "~/.doom.d/modules/spacemacs/layer/bm/packages.el")
 
+(load! "~/.doom.d/modules/spacemacs/layer/git/packages.el")
 
 
 
@@ -245,3 +246,4 @@ Useful for making the home buffer the only visible buffer in the frame."
 (spacemacs-layouts/init-eyebrowse)
 (spacemacs-layouts/init-persp-mode)
 (bm/init-bm)
+(git/init-git-timemachine)
