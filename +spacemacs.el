@@ -119,6 +119,8 @@ Useful for making the home buffer the only visible buffer in the frame."
 (load! "~/.doom.d/modules/spacemacs/layer/pdf/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/epub/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/dash/packages.el")
+;; (load! "~/.doom.d/modules/spacemacs/layer/dash/config.el")
+;; (load! "~/.doom.d/modules/spacemacs/layer/dash/funcs.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-defaults/funcs.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-defaults/keybindings.el")
 ;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/packages.el")
@@ -228,7 +230,7 @@ Useful for making the home buffer the only visible buffer in the frame."
 (pdf/init-pdf-tools)
 (epub/init-nov)
 (dash/init-dash-at-point)
-
+;;(dash/init-counsel-dash)
 
 
 (setq hydra--work-around-dedicated nil) ;; help lv to work https://github.com/abo-abo/hydra/issues/329, even setup this, lv can still has bug with SPC-l-n or SPC-l-p
