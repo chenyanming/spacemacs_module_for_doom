@@ -72,3 +72,4 @@ Enjoy~
    - Workspaces Transient State: ~SPC-l-w~
    - BM Transient State: ~SPC-a-b~
    - VCS Transient State: ~SPC-g-.~
+   - Git Timemachine Transient State: ~SPC-g-t~
