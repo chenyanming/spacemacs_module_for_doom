@@ -56,6 +56,7 @@ defer call using `spacemacs-post-user-config-hook'."
       (funcall func)
     (add-hook 'spacemacs-post-user-config-hook func)))
 
+(setq version-control-diff-tool 'git-gutter)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                ; redifine the spacemcas/set-leader-keys macro ;
@@ -121,9 +122,9 @@ Useful for making the home buffer the only visible buffer in the frame."
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-defaults/funcs.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-defaults/keybindings.el")
 ;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/packages.el")
-;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/keybindings.el")
-;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/funcs.el")
-;; (load! "~/.doom.d/modules/spacemacs/layer/version-control/config.el")
+(load! "~/.doom.d/modules/spacemacs/layer/version-control/keybindings.el")
+(load! "~/.doom.d/modules/spacemacs/layer/version-control/funcs.el")
+(load! "~/.doom.d/modules/spacemacs/layer/version-control/config.el")
 (load! "~/.doom.d/modules/spacemacs/layer/github/funcs.el")
 (load! "~/.doom.d/modules/spacemacs/layer/github/packages.el")
 (load! "~/.doom.d/modules/spacemacs/layer/spacemacs-navigation/funcs.el")
