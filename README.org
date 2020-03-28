@@ -25,6 +25,7 @@ And install the missing packages in ~packages.el~
 (package! auto-highlight-symbol) ;; for spacemacs-navigation
 (package! eyebrowse) ;; for spacemacs-layouts
 (package! bm) ;; for bm layer
+(package! evil-iedit-state) ;; for spacemacs-navigation
 #+END_SRC
 ** Adjust ~+spacemacs~ based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
