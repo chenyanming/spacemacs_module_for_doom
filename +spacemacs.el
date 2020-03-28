@@ -138,6 +138,9 @@ Useful for making the home buffer the only visible buffer in the frame."
 
 (load! "~/.doom.d/modules/spacemacs/layer/git/packages.el")
 
+(load! "~/.doom.d/modules/spacemacs/layer/javascript/packages.el")
+(load! "~/.doom.d/modules/spacemacs/layer/javascript/config.el")
+(load! "~/.doom.d/modules/spacemacs/layer/javascript/funcs.el")
 
 
 
@@ -243,9 +246,14 @@ Useful for making the home buffer the only visible buffer in the frame."
 ;; (setq hydra--work-around-dedicated nil)
 (spacemacs-navigation/init-auto-highlight-symbol)
 (spacemacs-navigation/init-symbol-overlay)
-
-
 (spacemacs-layouts/init-eyebrowse)
 (spacemacs-layouts/init-persp-mode)
 (bm/init-bm)
 (git/init-git-timemachine)
+
+(javascript/init-js2-mode)
+;; you can only choose either nodejs or skewer
+(setq javascript-repl 'nodejs)          ; choose nodejs
+(javascript/init-nodejs-repl)
+;;(setq javascript-repl 'skewer)        ; choose skewer
+;;(javascript/init-skewer-mode)
