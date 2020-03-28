@@ -1,6 +1,7 @@
-* spacemacs_to_doom
+* spacemacs module for doom emacs
 
-Aim to port spacemacs features (keybindings, transient state, layers etc) to doom, and provides a spacemacs module for doom.
+Aim to port spacemacs features (keybindings, transient state, layers etc) to
+doom, and provides a spacemacs module for doom emacs.
 
 ** Clone the module
 ~git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs~
@@ -8,7 +9,7 @@ Aim to port spacemacs features (keybindings, transient state, layers etc) to doo
 ** Enable necessary modules in ~init.el~
 Make sure enable the necessary modules in ~init.el~.
 
-At lease org, gist, pdf, lookup, and workspaces
+At lease org, gist, pdf, lookup, workspaces, and javascript.
 
 In order to use the windows transient state properly, please add ~+numbers~ for
 ~windows-select~ module.
@@ -27,7 +28,7 @@ And install the missing packages in ~packages.el~
 (package! bm) ;; for bm layer
 (package! evil-iedit-state) ;; for spacemacs-navigation
 #+END_SRC
-** Adjust ~+spacemacs~ based on your need
+** IMPORTANT: Adjust ~+spacemacs~ based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
 them in ~+spacemacs.el~ if necessary.
 
@@ -74,3 +75,4 @@ Enjoy~
    - BM Transient State: ~SPC-a-b~
    - VCS Transient State: ~SPC-g-.~
    - Git Timemachine Transient State: ~SPC-g-t~
+8. JavaScript layer major mode keybindings.
