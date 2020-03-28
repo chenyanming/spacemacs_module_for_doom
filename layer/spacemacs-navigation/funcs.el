@@ -180,7 +180,9 @@ If the universal prefix argument is used then kill also the window."
   (interactive)
   (cond
    ((and (not (eq dotspacemacs-editing-style 'emacs))
-         (configuration-layer/package-used-p 'evil-iedit-state))
+         ;;(configuration-layer/package-used-p 'evil-iedit-state)
+         )
+    (require 'evil-iedit-state)
     (evil-iedit-state/iedit-mode)
     (iedit-restrict-region (ahs-current-plugin-prop 'start)
                            (ahs-current-plugin-prop 'end)))
