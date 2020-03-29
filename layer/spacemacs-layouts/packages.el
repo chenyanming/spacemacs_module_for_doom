@@ -75,7 +75,7 @@
         ("C-h" eyebrowse-prev-window-config)
         ("C-l" eyebrowse-next-window-config)
         ("d" eyebrowse-close-window-config)
-        ("l" spacemacs/layouts-transient-state/body :exit t)
+        ("l" (lambda() (interactive) (setq hydra--work-around-dedicated t) (spacemacs/layouts-transient-state/body)) :exit t)
         ("n" eyebrowse-next-window-config)
         ("N" eyebrowse-prev-window-config)
         ("p" eyebrowse-prev-window-config)
