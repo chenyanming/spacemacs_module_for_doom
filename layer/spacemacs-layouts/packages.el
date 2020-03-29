@@ -210,7 +210,7 @@
         ("s" persp-save-state-to-file :exit t)
         ("S" persp-save-to-file-by-names :exit t)
         ("t" persp-temporarily-display-buffer :exit t)
-        ("w" spacemacs/workspaces-transient-state/body :exit t)
+        ("w" (lambda() (interactive) (setq hydra--work-around-dedicated t) (spacemacs/workspaces-transient-state/body)) :exit t)
         ("x" spacemacs/layouts-ts-kill)
         ("X" spacemacs/layouts-ts-kill-other :exit t))
       (spacemacs/set-leader-keys "l" '(lambda() (interactive) (setq hydra--work-around-dedicated t) (spacemacs/layouts-transient-state/body)))
