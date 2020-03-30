@@ -1,7 +1,13 @@
 * spacemacs module for doom emacs
 
-Aim to port spacemacs features (keybindings, transient state, layers etc) to
+Aim to port spacemacs features (keybindings, transient states, layers etc) to
 doom, and provides a spacemacs module for doom emacs.
+
+** Performance
+I personally use it every day, and it works really great with doom.
+
+*** Startup Time
+Estimate that it costs around 0.2 ~ 0.3 second (but it depends what type of CPU you use).
 
 ** Clone the module
 ~git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs~
@@ -43,6 +49,7 @@ Then sync the doom.
 *Please notice*:
 If you want to keep sync with my commits, every time you do git pull, you should better run ~./emacs.d/bin/doom
 sync~ again, in case the ~packages.el~ is updated.
+
 ** Notes on transient states
 Spacemacs's transient states are based on ~hydra~, while it seems has some
 problems with doom. I am trying to fix it.
@@ -52,9 +59,6 @@ e.g. to choose ~posframe~:
 (setq hydra-hint-display-type 'posframe)
 #+END_SRC
 
-** Startup Performance
-Estimate that it costs around 0.2 ~ 0.3 second (but it depends on the CPU you use), mine
-is INTEL i7.
 
 ** Restart Emacs
 Finally restart emacs~
