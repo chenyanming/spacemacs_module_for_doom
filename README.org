@@ -27,6 +27,8 @@ And install the missing packages in ~packages.el~
 (package! eyebrowse) ;; for spacemacs-layouts
 (package! bm) ;; for bm layer
 (package! evil-iedit-state) ;; for spacemacs-navigation
+(package! bind-map)
+(package! symbol-overlay)
 #+END_SRC
 ** IMPORTANT: Adjust ~+spacemacs~ based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
@@ -49,6 +51,10 @@ e.g. to choose ~posframe~:
 #+BEGIN_SRC emacs-lisp
 (setq hydra-hint-display-type 'posframe)
 #+END_SRC
+
+** Startup Performance
+Estimate that it costs around 0.2 ~ 0.3 second (but it depends on the CPU you use), mine
+is INTEL i7.
 
 ** Restart Emacs
 Finally restart emacs~
