@@ -113,6 +113,7 @@
     :init (spacemacs/set-leader-keys "v" 'er/expand-region)
     :config
     (progn
+      (require 'evil-iedit-state) ;; for "e" key
       ;; add search capability to expand-region
       (when (featurep 'helm-ag)
         (defadvice er/prepare-for-more-expansions-internal
