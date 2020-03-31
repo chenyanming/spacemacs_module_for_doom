@@ -1005,4 +1005,34 @@ If FRAME is nil, it defaults to the selected frame."
 (map! :leader :n "TT"
       'spacemacs/scale-transparency-transient-state/spacemacs/toggle-transparency)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ;    copy from spacemacs-boostrap
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defvar dotspacemacs-folding-method 'evil
+  "Code folding method. Possible values are `evil' and `origami'.")
+
+;; fold transient state
+(when (eq 'evil dotspacemacs-folding-method)
+  (spacemacs|define-transient-state fold
+    :title "Code Fold Transient State"
+    :doc "
+ Close^^          Open^^              Toggle^^             Other^^
+ ───────^^──────  ─────^^───────────  ─────^^────────────  ─────^^───
+ [_c_] at point   [_o_] at point      [_a_] around point   [_q_] quit
+ ^^               [_O_] recursively   ^^
+ [_m_] all        [_r_] all"
+    :foreign-keys run
+    :bindings
+    ("a" +fold/toggle)
+    ("c" +fold/close)
+    ("o" +fold/open)
+    ("O" (evil-fold-action evil-fold-list :open-rec))
+    ("r" +fold/open-all)
+    ("m" +fold/close-all)
+    ("q" nil :exit t)
+    ("C-g" nil :exit t)
+    ("<SPC>" nil :exit t)))
+(spacemacs/set-leader-keys "z." 'spacemacs/fold-transient-state/body)
 ;; end of Transparency Transient State

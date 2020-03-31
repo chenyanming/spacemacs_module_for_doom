@@ -263,3 +263,5 @@ Useful for making the home buffer the only visible buffer in the frame."
 (spacemacs-editing/init-link-hint)
 (spacemacs-editing/init-move-text)
 (spacemacs-editing/init-string-inflection)
+
+(setq dotspacemacs-folding-method 'evil)
