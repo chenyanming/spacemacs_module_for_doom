@@ -93,4 +93,5 @@ Enjoy~
    - Git Timemachine Transient State: ~SPC-g-t~
    - Move Text Transient State: ~SPC-x-J, SPC-x-K~
    - String Inflection Transient State: ~SPC-x-i-i~
+   - Fold Transient State: ~SPC-z-.~
 8. JavaScript layer major mode keybindings.
