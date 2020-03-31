@@ -142,7 +142,7 @@ Useful for making the home buffer the only visible buffer in the frame."
 (load! "~/.doom.d/modules/spacemacs/layer/javascript/config.el")
 (load! "~/.doom.d/modules/spacemacs/layer/javascript/funcs.el")
 
-
+(load! "~/.doom.d/modules/spacemacs/layer/spacemacs-editing/packages.el")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -257,3 +257,9 @@ Useful for making the home buffer the only visible buffer in the frame."
 (javascript/init-nodejs-repl)
 ;;(setq javascript-repl 'skewer)        ; choose skewer
 ;;(javascript/init-skewer-mode)
+
+(spacemacs-editing/init-avy)
+(spacemacs-editing/init-expand-region)
+(spacemacs-editing/init-link-hint)
+(spacemacs-editing/init-move-text)
+(spacemacs-editing/init-string-inflection)
