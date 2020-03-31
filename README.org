@@ -35,6 +35,8 @@ And install the missing packages in ~packages.el~
 (package! evil-iedit-state) ;; for spacemacs-navigation
 (package! bind-map)
 (package! symbol-overlay)
+(package! move-text) ;; for spacemacs-editing
+(package! string-inflection) ;; for spacemacs-editing
 #+END_SRC
 ** IMPORTANT: Adjust ~+spacemacs~ based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
@@ -66,7 +68,11 @@ Finally restart emacs~
 Enjoy~
 
 ** Current status
-1. Default spacemacs leader keybindings.
+1. Some Default spacemacs leader keybindings.
+   - spacemacs-editing
+   - spacemacs-layouts
+   - spacemacs-navigation
+   - spacemacs-defaults
 2. org layer keybindings.
 3. Github layer keybindings.
 4. PDF layer keybindings.
@@ -85,4 +91,6 @@ Enjoy~
    - BM Transient State: ~SPC-a-b~
    - VCS Transient State: ~SPC-g-.~
    - Git Timemachine Transient State: ~SPC-g-t~
+   - Move Text Transient State: ~SPC-x-J, SPC-x-K~
+   - String Inflection Transient State: ~SPC-x-i-i~
 8. JavaScript layer major mode keybindings.
