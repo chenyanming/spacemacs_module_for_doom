@@ -2,7 +2,7 @@
 
 ;;; Setup & load spacmeacs core packages
 
-(defcustom spacemacs-path (expand-file-name "~/.doom.d/modules/spacemacs/")
+(defcustom spacemacs-path (expand-file-name "~/.doom.d/modules/")
  "spacemacs module path"
  :group 'sapcemacs
  :type 'string)
@@ -24,15 +24,15 @@
   (doom/goto-private-config-file))
 
 ;; (setq dotspacemacs-persistent-server t)
-(load! (concat spacemacs-path "core/core-funcs.el"))
-; (load! (concat spacemacs-path "core/core-spacemacs-buffer.el")
-;; (load! (concat spacemacs-path "core/core-fonts-support.el")
-;; (load! (concat spacemacs-path "core/core-dumper.el")
-(load! (concat spacemacs-path "core/core-keybindings.el"))
-(load! (concat spacemacs-path "core/core-transient-state.el"))
-(load! (concat spacemacs-path "core/core-toggle.el"))
-;; (load! (concat spacemacs-path "core/core-hooks.el")
-;; (load! (concat spacemacs-path "core/core-fonts-support.el")
+(load! (concat spacemacs-path "spacemacs/core/core-funcs.el"))
+; (load! (concat spacemacs-path "spacemacs/core/core-spacemacs-buffer.el")
+;; (load! (concat spacemacs-path "spacemacs/core/core-fonts-support.el")
+;; (load! (concat spacemacs-path "spacemacs/core/core-dumper.el")
+(load! (concat spacemacs-path "spacemacs/core/core-keybindings.el"))
+(load! (concat spacemacs-path "spacemacs/core/core-transient-state.el"))
+(load! (concat spacemacs-path "spacemacs/core/core-toggle.el"))
+;; (load! (concat spacemacs-path "spacemacs/core/core-hooks.el")
+;; (load! (concat spacemacs-path "spacemacs/core/core-fonts-support.el")
 ;; TODO: evilified-state-evilify-map seems to have conflict with the doom
 ;; setting, like the leader key setting.
 ;; (use-package! evil-evilified-state
@@ -101,33 +101,33 @@ Useful for making the home buffer the only visible buffer in the frame."
 
 
 ;;;  load the modified spacemacs layers packages
-(load! (concat spacemacs-path "layer/org/packages.el"))
-(load! (concat spacemacs-path "layer/pdf/packages.el"))
-(load! (concat spacemacs-path "layer/epub/packages.el"))
-(load! (concat spacemacs-path "layer/dash/packages.el"))
-;; (load! (concat spacemacs-path "layer/dash/config.el"))
-;; (load! (concat spacemacs-path "layer/dash/funcs.el"))
-(load! (concat spacemacs-path "layer/spacemacs-defaults/funcs.el"))
-(load! (concat spacemacs-path "layer/spacemacs-defaults/keybindings.el"))
-;; (load! (concat spacemacs-path "layer/version-control/packages.el"))
-(load! (concat spacemacs-path "layer/version-control/keybindings.el"))
-(load! (concat spacemacs-path "layer/version-control/funcs.el"))
-(load! (concat spacemacs-path "layer/version-control/config.el"))
-(load! (concat spacemacs-path "layer/github/funcs.el"))
-(load! (concat spacemacs-path "layer/github/packages.el"))
-(load! (concat spacemacs-path "layer/spacemacs-navigation/funcs.el"))
-(load! (concat spacemacs-path "layer/spacemacs-navigation/packages.el"))
-(load! (concat spacemacs-path "layer/spacemacs-layouts/packages.el"))
-(load! (concat spacemacs-path "layer/spacemacs-layouts/funcs.el"))
-(load! (concat spacemacs-path "layer/spacemacs-layouts/config.el"))
-(load! (concat spacemacs-path "layer/bm/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/org/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/pdf/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/epub/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/dash/packages.el"))
+;; (load! (concat spacemacs-path "spacemacs/layer/dash/config.el"))
+;; (load! (concat spacemacs-path "spacemacs/layer/dash/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-defaults/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-defaults/keybindings.el"))
+;; (load! (concat spacemacs-path "spacemacs/layer/version-control/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/version-control/keybindings.el"))
+(load! (concat spacemacs-path "spacemacs/layer/version-control/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/version-control/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/github/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/github/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-navigation/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-navigation/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/bm/packages.el"))
 
-(load! (concat spacemacs-path "layer/git/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/git/packages.el"))
 
-(load! (concat spacemacs-path "layer/javascript/packages.el"))
-(load! (concat spacemacs-path "layer/javascript/config.el"))
-(load! (concat spacemacs-path "layer/javascript/funcs.el"))
-(load! (concat spacemacs-path "layer/spacemacs-editing/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/javascript/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/javascript/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/javascript/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-editing/packages.el"))
 
 ;;; initialise layers
 
