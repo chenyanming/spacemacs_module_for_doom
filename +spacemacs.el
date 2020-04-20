@@ -3,8 +3,7 @@
 ;;; Setup & load spacmeacs core packages
 
 (if (not (bound-and-true-p spacemacs-path))
-    (setq spacemacs-path "~/.doom.d/modules/")
-  (setq spacemacs-path user-emacs-directory))
+    (setq spacemacs-path "~/.doom.d/modules/"))
 
 (setq dotspacemacs-editing-style 'vim)
 (setq dotspacemacs-emacs-command-key "SPC")
