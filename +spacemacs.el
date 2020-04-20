@@ -2,10 +2,9 @@
 
 ;;; Setup & load spacmeacs core packages
 
-(defcustom spacemacs-path (expand-file-name "~/.doom.d/modules/")
- "spacemacs module path"
- :group 'sapcemacs
- :type 'string)
+(if (not (bound-and-true-p spacemacs-path))
+    (setq spacemacs-path "~/.doom.d/modules/")
+  (setq spacemacs-path user-emacs-directory))
 
 (setq dotspacemacs-editing-style 'vim)
 (setq dotspacemacs-emacs-command-key "SPC")
