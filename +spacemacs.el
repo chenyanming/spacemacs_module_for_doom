@@ -41,6 +41,9 @@
 ;; (require 'core-funcs)
 ;; (require 'core-keybindings)
 
+(defvar dotspacemacs-distinguish-gui-tab nil
+  "If non nil, distinguish C-i and tab in the GUI version of Emacs.")
+
 (defvar spacemacs-post-user-config-hook nil
   "Hook run after dotspacemacs/user-config")
 (defvar spacemacs-post-user-config-hook-run nil
