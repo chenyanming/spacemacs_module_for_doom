@@ -100,6 +100,11 @@ Useful for making the home buffer the only visible buffer in the frame."
       "wc" nil
       "x" nil)
 
+;;; define some simple but important keys with map! which is easier than using
+;;; spacemacs ways to define.
+(map! :leader
+      (:when (or (featurep! :completion ivy) (featurep! :completion helm))
+        :desc "M-x"                     :n "SPC" #'M-x))
 
 ;;;  load the modified spacemacs layers packages
 (load! (concat spacemacs-path "spacemacs/layer/org/packages.el"))
