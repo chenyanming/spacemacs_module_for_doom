@@ -130,6 +130,10 @@ Useful for making the home buffer the only visible buffer in the frame."
 (load! (concat spacemacs-path "spacemacs/layer/javascript/funcs.el"))
 (load! (concat spacemacs-path "spacemacs/layer/spacemacs-editing/packages.el"))
 
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/packages.el"))
+
 ;;; initialise layers
 
 ; (spacemacs-defaults/init-abbrev)
@@ -233,4 +237,29 @@ Useful for making the home buffer the only visible buffer in the frame."
 (spacemacs-editing/init-move-text)
 (spacemacs-editing/init-string-inflection)
 
+
+;; (spacemacs-evil/init-evil-anzu)
+;; (spacemacs-evil/init-evil-args)
+;; (spacemacs-evil/init-evil-cleverparens)
+;; (spacemacs-evil/init-evil-ediff)
+;; (spacemacs-evil/init-evil-escape)
+;; (spacemacs-evil/init-evil-exchange)
+;; (spacemacs-evil/init-evil-goggles)
+(spacemacs-evil/init-evil-iedit-state)
+;; (spacemacs-evil/init-evil-indent-plus)
+(spacemacs-evil/init-evil-lion)
+;;(spacemacs-evil/init-evil-lisp-state)
+(spacemacs-evil/init-evil-nerd-commenter)
+;; (spacemacs-evil/init-evil-matchit)
+(spacemacs-evil/init-evil-numbers)
+;; (spacemacs-evil/init-evil-surround)
+(spacemacs-evil/init-evil-terminal-cursor-changer)
+;; (spacemacs-evil/init-evil-textobj-line)
+;; (spacemacs-evil/init-evil-tutor)
+;; (spacemacs-evil/init-evil-unimpaired)
+;; (spacemacs-evil/init-evil-visual-mark-mode)
+;; (spacemacs-evil/init-evil-visualstar)
+;; (spacemacs-evil/init-hs-minor-mode)
+;; (spacemacs-evil/init-linum-relative)
+;; (spacemacs-evil/init-vi-tilde-fringe)
 (setq dotspacemacs-folding-method 'evil)
