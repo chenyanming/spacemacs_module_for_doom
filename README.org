@@ -12,10 +12,13 @@ Estimate that it costs around 0.2 ~ 0.3 second (but it depends what type of CPU 
 ** Clone the module
 ~git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs~
 
+If you want to clone to other directory, check the issue
+https://github.com/chenyanming/spacemacs_module_for_doom/pull/2
+
 ** Enable necessary modules in ~init.el~
 Make sure enable the necessary modules in ~init.el~.
 
-At lease org, gist, pdf, lookup, workspaces, and javascript.
+At lease evil, org, gist, pdf, lookup, workspaces, and javascript.
 
 In order to use the windows transient state properly, please add ~+numbers~ for
 ~windows-select~ module.
@@ -74,6 +77,7 @@ Enjoy~
    - spacemacs-layouts
    - spacemacs-navigation
    - spacemacs-defaults
+   - spacemacs-evil
 2. org layer keybindings.
 3. Github layer keybindings.
 4. PDF layer keybindings.
@@ -95,4 +99,5 @@ Enjoy~
    - Move Text Transient State: ~SPC-x-J, SPC-x-K~
    - String Inflection Transient State: ~SPC-x-i-i~
    - Fold Transient State: ~SPC-z-.~
+   - Evil number Transient State: ~SPC-n-+~
 8. JavaScript layer major mode keybindings.
