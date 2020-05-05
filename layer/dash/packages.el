@@ -34,7 +34,7 @@
     :defer t
     :init (progn
             (spacemacs/declare-prefix "d" "docs")
-            (map! :leader :n
+            (spacemacs/set-leader-keys
               "dd" 'dash-at-point
               "dD" 'dash-at-point-with-docset))))
 

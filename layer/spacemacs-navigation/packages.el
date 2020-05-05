@@ -107,8 +107,7 @@
         (define-key evil-motion-state-map (kbd "#")
           'spacemacs/enter-ahs-backward))
 
-      ;; (spacemacs/set-leader-keys
-      (map! :leader :n
+      (spacemacs/set-leader-keys
         "sh" 'spacemacs/symbol-highlight
         "sH" 'spacemacs/goto-last-searched-ahs-symbol)
 

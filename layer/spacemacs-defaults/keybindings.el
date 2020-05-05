@@ -145,99 +145,97 @@
 ;; ---------------------------------------------------------------------------
 
 ;; Universal argument ---------------------------------------------------------
-(map! :leader :n "u" 'universal-argument)
+(spacemacs/set-leader-keys "u" 'universal-argument)
 (when (memq dotspacemacs-editing-style '(vim hybrid))
   (define-key universal-argument-map
     (kbd (concat dotspacemacs-leader-key " u"))
     'universal-argument-more))
 ;; shell command  -------------------------------------------------------------
-(map! :leader :n "!" 'shell-command)
+(spacemacs/set-leader-keys "!" 'shell-command)
 ;; kmacros --------------------------------------------------------------------
-(map! :leader :n
-      "K("  'kmacro-start-macro-or-insert-counter
-      "K)"  'kmacro-end-or-call-macro-repeat
-      "K2c" 'kmacro-call-ring-2nd
-      "K2C" 'kmacro-call-ring-2nd-repeat
-      "K2v" 'kmacro-view-ring-2nd
-      "Ka"  'kmacro-add-counter
-      "Kb"  'kmacro-bind-to-key
-      "Kc"  'kmacro-call-macro
-      "Kd"  'kmacro-delete-ring-head
-      "Kel" 'kmacro-edit-lossage
-      "Kem" 'kmacro-edit-macro
-      "Ker" 'kmacro-edit-macro-repeat
-      "Ket" 'kmacro-step-edit-macro
-      "Ki"  'kmacro-insert-counter
-      "Km"  'kmacro-end-call-mouse
-      "Kn"  'kmacro-cycle-ring-next
-      "KN"  'kmacro-name-last-macro
-      "Kp"  'kmacro-cycle-ring-previous
-      "Kr"  'helm-register
-      "Ksc" 'kmacro-set-counter
-      "Ksf" 'kmacro-set-format
-      "Ksr" 'kmacro-swap-ring
-      "Kv"  'kmacro-view-macro
-      "KV"  'kmacro-view-macro-repeat
-      "Kw"  'kmacro-to-register
-      "Ky"  'jump-to-register)
+(spacemacs/set-leader-keys
+  "K("  'kmacro-start-macro-or-insert-counter
+  "K)"  'kmacro-end-or-call-macro-repeat
+  "K2c" 'kmacro-call-ring-2nd
+  "K2C" 'kmacro-call-ring-2nd-repeat
+  "K2v" 'kmacro-view-ring-2nd
+  "Ka"  'kmacro-add-counter
+  "Kb"  'kmacro-bind-to-key
+  "Kc"  'kmacro-call-macro
+  "Kd"  'kmacro-delete-ring-head
+  "Kel" 'kmacro-edit-lossage
+  "Kem" 'kmacro-edit-macro
+  "Ker" 'kmacro-edit-macro-repeat
+  "Ket" 'kmacro-step-edit-macro
+  "Ki"  'kmacro-insert-counter
+  "Km"  'kmacro-end-call-mouse
+  "Kn"  'kmacro-cycle-ring-next
+  "KN"  'kmacro-name-last-macro
+  "Kp"  'kmacro-cycle-ring-previous
+  "Kr"  'helm-register
+  "Ksc" 'kmacro-set-counter
+  "Ksf" 'kmacro-set-format
+  "Ksr" 'kmacro-swap-ring
+  "Kv"  'kmacro-view-macro
+  "KV"  'kmacro-view-macro-repeat
+  "Kw"  'kmacro-to-register
+  "Ky"  'jump-to-register)
 ;; rectangles ------------------------------------------------------------------
-(map! :leader :n
-      "R!" 'clear-rectangle
-      "Rc" 'close-rectangle
-      "Rd" 'delete-rectangle
-      "Re" 'rectangle-exchange-point-and-mark
-      "Ri" 'copy-rectangle-to-register
-      "Rk" 'kill-rectangle
-      "Rl" 'rectangle-left-char
-      "Rm" 'rectangle-mark-mode
-      "Rn" 'rectangle-next-line
-      "RN" 'rectangle-number-lines
-      "Ro" 'open-rectangle
-      "Rp" 'rectangle-previous-line
-      "Rr" 'rectangle-right-char
-      "Rs" 'string-rectangle
-      "Rt" 'transpose-regions
-      "Ry" 'yank-rectangle)
+(spacemacs/set-leader-keys
+  "R!" 'clear-rectangle
+  "Rc" 'close-rectangle
+  "Rd" 'delete-rectangle
+  "Re" 'rectangle-exchange-point-and-mark
+  "Ri" 'copy-rectangle-to-register
+  "Rk" 'kill-rectangle
+  "Rl" 'rectangle-left-char
+  "Rm" 'rectangle-mark-mode
+  "Rn" 'rectangle-next-line
+  "RN" 'rectangle-number-lines
+  "Ro" 'open-rectangle
+  "Rp" 'rectangle-previous-line
+  "Rr" 'rectangle-right-char
+  "Rs" 'string-rectangle
+  "Rt" 'transpose-regions
+  "Ry" 'yank-rectangle)
 ;; applications ---------------------------------------------------------------
-(map! :leader :n
-      "ac"  'calc-dispatch
-      "ap"  'list-processes
-      "aP"  'proced
-      "au"  'undo-tree-visualize)
+(spacemacs/set-leader-keys
+  "ac"  'calc-dispatch
+  "ap"  'list-processes
+  "aP"  'proced
+  "au"  'undo-tree-visualize)
 ;; buffers --------------------------------------------------------------------
-(map! :leader
-      "bN" nil)
-(map! :leader :n
-      ;; "TAB"   'spacemacs/alternate-buffer
-      "bd"    'spacemacs/kill-this-buffer
-      "be"    'spacemacs/safe-erase-buffer
-      "bh"    'spacemacs/home
-      "bH"    'spacemacs/switch-to-help-buffer
-      "b C-d" 'spacemacs/kill-other-buffers
-      "b C-S-d" 'spacemacs/kill-matching-buffers-rudely
-      "bn"    'next-buffer
-      "bm"    'spacemacs/switch-to-messages-buffer
-      "b N h" 'spacemacs/new-empty-buffer-left
-      "b N C-i" 'make-indirect-buffer
-      "b N i" 'clone-indirect-buffer
-      "b N I" 'clone-indirect-buffer-other-window-without-purpose
-      "b N j" 'spacemacs/new-empty-buffer-below
-      "b N k" 'spacemacs/new-empty-buffer-above
-      "b N l" 'spacemacs/new-empty-buffer-right
-      "b N f" 'spacemacs/new-empty-buffer-new-frame
-      "b N n" 'spacemacs/new-empty-buffer
-      "bP"    'spacemacs/copy-clipboard-to-whole-buffer
-      "bp"    'previous-buffer
-      "bR"    'spacemacs/safe-revert-buffer
-      "bs"    'spacemacs/switch-to-scratch-buffer
-      "bu"    'spacemacs/reopen-killed-buffer
-      "bx"    'kill-buffer-and-window
-      "bY"    'spacemacs/copy-whole-buffer-to-clipboard
-      "bw"    'read-only-mode)
+(spacemacs/set-leader-keys
+  "TAB"   'spacemacs/alternate-buffer
+  "bd"    'spacemacs/kill-this-buffer
+  "be"    'spacemacs/safe-erase-buffer
+  "bh"    'spacemacs/home
+  "bH"    'spacemacs/switch-to-help-buffer
+  "b C-d" 'spacemacs/kill-other-buffers
+  "b C-S-d" 'spacemacs/kill-matching-buffers-rudely
+  "bn"    'next-buffer
+  "bm"    'spacemacs/switch-to-messages-buffer
+  "b N h" 'spacemacs/new-empty-buffer-left
+  "b N C-i" 'make-indirect-buffer
+  "b N i" 'clone-indirect-buffer
+  "b N I" 'clone-indirect-buffer-other-window-without-purpose
+  "b N j" 'spacemacs/new-empty-buffer-below
+  "b N k" 'spacemacs/new-empty-buffer-above
+  "b N l" 'spacemacs/new-empty-buffer-right
+  "b N f" 'spacemacs/new-empty-buffer-new-frame
+  "b N n" 'spacemacs/new-empty-buffer
+  "bP"    'spacemacs/copy-clipboard-to-whole-buffer
+  "bp"    'previous-buffer
+  "bR"    'spacemacs/safe-revert-buffer
+  "bs"    'spacemacs/switch-to-scratch-buffer
+  "bu"    'spacemacs/reopen-killed-buffer
+  "bx"    'kill-buffer-and-window
+  "bY"    'spacemacs/copy-whole-buffer-to-clipboard
+  "bw"    'read-only-mode)
 (dotimes (i 9)
   (let ((n (+ i 1)))
-    (map! :leader :n (format "b%i" n)
-          (intern (format "buffer-to-window-%s" n)))))
+    (spacemacs/set-leader-keys (format "b%i" n)
+      (intern (format "buffer-to-window-%s" n)))))
 ;; Cycling settings -----------------------------------------------------------
 (spacemacs|define-transient-state theme
   :title "Themes Transient State"
@@ -250,16 +248,16 @@
   ("<up>" helm-themes)
   ("<right>" spacemacs/cycle-spacemacs-theme)
   ("<left>" spacemacs/cycle-spacemacs-theme-backward))
-(map! :leader :n "Tn"
-      'spacemacs/theme-transient-state/spacemacs/cycle-spacemacs-theme)
-(map! :leader :n "TN"
-      'spacemacs/theme-transient-state/spacemacs/cycle-spacemacs-theme-backward)
+(spacemacs/set-leader-keys "Tn"
+  'spacemacs/theme-transient-state/spacemacs/cycle-spacemacs-theme)
+(spacemacs/set-leader-keys "TN"
+  'spacemacs/theme-transient-state/spacemacs/cycle-spacemacs-theme-backward)
 ;; errors ---------------------------------------------------------------------
-(map! :leader :n
-      "ez" 'spacemacs/last-error
-      "en" 'spacemacs/next-error
-      "eN" 'spacemacs/previous-error
-      "ep" 'spacemacs/previous-error)
+(spacemacs/set-leader-keys
+  "ez" 'spacemacs/last-error
+  "en" 'spacemacs/next-error
+  "eN" 'spacemacs/previous-error
+  "ep" 'spacemacs/previous-error)
 (spacemacs|define-transient-state error
   :title "Error Transient State"
   :hint-is-doc t
@@ -290,146 +288,137 @@
   ("q" nil "quit" :exit t)
   :evil-leader "e.")
 ;; ediff ----------------------------------------------------------------------
-(map! :leader :n
-      "Eb3"  'ediff-buffers3
-      "Ebb"  'ediff-buffers
-      "Ebp"  'ediff-patch-buffer
-      "EB"   'ediff-backup
-      "Ed3"  'ediff-directories3
-      "Edd"  'ediff-directories
-      "Edr"  'ediff-directory-revisions
-      "Ef."  'spacemacs/ediff-dotfile-and-template
-      "Ef3"  'ediff-files3
-      "Eff"  'ediff-files
-      "Efp"  'ediff-patch-file
-      "Eh"   'ediff-documentation
-      "Emb3" 'ediff-merge-buffers-with-ancestor
-      "Embb" 'ediff-merge-buffers
-      "Emd3" 'ediff-merge-directories-with-ancestor
-      "Emdd" 'ediff-merge-directories
-      "Emf3" 'ediff-merge-files-with-ancestor
-      "Emff" 'ediff-merge-files
-      "Emr3" 'ediff-merge-revisions-with-ancestor
-      "Emrr" 'ediff-merge-revisions
-      "Erl"  'ediff-regions-linewise
-      "Erw"  'ediff-regions-wordwise
-      "Es"   'ediff-show-registry
-      "Ev"   'ediff-revision
-      "Ewl"  'ediff-windows-linewise
-      "Eww"  'ediff-windows-wordwise)
+(spacemacs/set-leader-keys
+  "Eb3"  'ediff-buffers3
+  "Ebb"  'ediff-buffers
+  "Ebp"  'ediff-patch-buffer
+  "EB"   'ediff-backup
+  "Ed3"  'ediff-directories3
+  "Edd"  'ediff-directories
+  "Edr"  'ediff-directory-revisions
+  "Ef."  'spacemacs/ediff-dotfile-and-template
+  "Ef3"  'ediff-files3
+  "Eff"  'ediff-files
+  "Efp"  'ediff-patch-file
+  "Eh"   'ediff-documentation
+  "Emb3" 'ediff-merge-buffers-with-ancestor
+  "Embb" 'ediff-merge-buffers
+  "Emd3" 'ediff-merge-directories-with-ancestor
+  "Emdd" 'ediff-merge-directories
+  "Emf3" 'ediff-merge-files-with-ancestor
+  "Emff" 'ediff-merge-files
+  "Emr3" 'ediff-merge-revisions-with-ancestor
+  "Emrr" 'ediff-merge-revisions
+  "Erl"  'ediff-regions-linewise
+  "Erw"  'ediff-regions-wordwise
+  "Es"   'ediff-show-registry
+  "Ev"   'ediff-revision
+  "Ewl"  'ediff-windows-linewise
+  "Eww"  'ediff-windows-wordwise)
 ;; file -----------------------------------------------------------------------
-(map! :leader
-      "fe" nil
-      "fC" nil
-      "fy" nil)
-(map! :leader :n
-      "fA" 'spacemacs/find-file-and-replace-buffer
-      "fc" 'spacemacs/copy-file
-      "fD" 'spacemacs/delete-current-buffer-file
-      "fec" 'spacemacs/recompile-elpa
-      "fei" 'spacemacs/find-user-init-file
-      "fed" 'spacemacs/find-dotfile
-      "feD" 'spacemacs/ediff-dotfile-and-template
-      "fee" 'spacemacs/edit-env
-      "feE" 'dotspacemacs/call-user-env
-      "fe C-e" 'spacemacs/force-init-spacemacs-env
-      "feR" 'dotspacemacs/sync-configuration-layers
-      "fev" 'spacemacs/display-and-copy-version
-      "feU"  'configuration-layer/update-packages
-      "fCd" 'spacemacs/unix2dos
-      "fCu" 'spacemacs/dos2unix
-      "fi" 'spacemacs/insert-file
-      "fg" 'rgrep
-      "fl" 'find-file-literally
-      "fE" 'spacemacs/sudo-edit
-      "fo" 'spacemacs/open-file-or-directory-in-external-app
-      "fR" 'spacemacs/rename-current-buffer-file
-      "fS" 'evil-write-all
-      "fs" 'save-buffer
-      "fvd" 'add-dir-local-variable
-      "fvf" 'add-file-local-variable
-      "fvp" 'add-file-local-variable-prop-line
-      "fyc" 'spacemacs/copy-file-path-with-line-column
-      "fyd" 'spacemacs/copy-directory-path
-      "fyl" 'spacemacs/copy-file-path-with-line
-      "fyn" 'spacemacs/copy-file-name
-      "fyN" 'spacemacs/copy-file-name-base
-      "fyy" 'spacemacs/copy-file-path
-      )
+(spacemacs/set-leader-keys
+  "fA" 'spacemacs/find-file-and-replace-buffer
+  "fc" 'spacemacs/copy-file
+  "fD" 'spacemacs/delete-current-buffer-file
+  "fec" 'spacemacs/recompile-elpa
+  "fei" 'spacemacs/find-user-init-file
+  "fed" 'spacemacs/find-dotfile
+  "feD" 'spacemacs/ediff-dotfile-and-template
+  "fee" 'spacemacs/edit-env
+  "feE" 'dotspacemacs/call-user-env
+  "fe C-e" 'spacemacs/force-init-spacemacs-env
+  "feR" 'dotspacemacs/sync-configuration-layers
+  "fev" 'spacemacs/display-and-copy-version
+  "feU"  'configuration-layer/update-packages
+  "fCd" 'spacemacs/unix2dos
+  "fCu" 'spacemacs/dos2unix
+  "fi" 'spacemacs/insert-file
+  "fg" 'rgrep
+  "fl" 'find-file-literally
+  "fE" 'spacemacs/sudo-edit
+  "fo" 'spacemacs/open-file-or-directory-in-external-app
+  "fR" 'spacemacs/rename-current-buffer-file
+  "fS" 'evil-write-all
+  "fs" 'save-buffer
+  "fvd" 'add-dir-local-variable
+  "fvf" 'add-file-local-variable
+  "fvp" 'add-file-local-variable-prop-line
+  "fyc" 'spacemacs/copy-file-path-with-line-column
+  "fyd" 'spacemacs/copy-directory-path
+  "fyl" 'spacemacs/copy-file-path-with-line
+  "fyn" 'spacemacs/copy-file-name
+  "fyN" 'spacemacs/copy-file-name-base
+  "fyy" 'spacemacs/copy-file-path)
 ;; frame ----------------------------------------------------------------------
-(map! :leader :n
-      "Ff" 'spacemacs/find-file-other-frame
-      "Fd" 'delete-frame
-      "FD" 'delete-other-frames
-      "Fb" 'spacemacs/switch-to-buffer-other-frame
-      "FB" 'spacemacs/display-buffer-other-frame
-      "Fo" 'other-frame
-      "FO" 'spacemacs/dired-other-frame
-      "Fn" 'make-frame)
+(spacemacs/set-leader-keys
+  "Ff" 'spacemacs/find-file-other-frame
+  "Fd" 'delete-frame
+  "FD" 'delete-other-frames
+  "Fb" 'spacemacs/switch-to-buffer-other-frame
+  "FB" 'spacemacs/display-buffer-other-frame
+  "Fo" 'other-frame
+  "FO" 'spacemacs/dired-other-frame
+  "Fn" 'make-frame)
 ;; help -----------------------------------------------------------------------
 (defalias 'emacs-tutorial 'help-with-tutorial)
-(map! :leader
-      "hP" nil
-      "hT" nil)
-(map! :leader :n
-      "hdb" 'describe-bindings
-      "hdc" 'describe-char
-      "hdf" 'describe-function
-      "hdk" 'describe-key
-      "hdl" 'spacemacs/describe-last-keys
-      "hdp" 'describe-package
-      "hdP" 'configuration-layer/describe-package
-      "hds" 'spacemacs/describe-system-info
-      "hdt" 'describe-theme
-      "hdv" 'describe-variable
-      "hI"  'spacemacs/report-issue
-      "hn"  'view-emacs-news
-      "hPs" 'profiler-start
-      "hPk" 'profiler-stop
-      "hPr" 'profiler-report
-      "hPw" 'profiler-report-write-profile
-      "hTe" 'emacs-tutorial
-      )
+(spacemacs/set-leader-keys
+  "hdb" 'describe-bindings
+  "hdc" 'describe-char
+  "hdf" 'describe-function
+  "hdk" 'describe-key
+  "hdl" 'spacemacs/describe-last-keys
+  "hdp" 'describe-package
+  "hdP" 'configuration-layer/describe-package
+  "hds" 'spacemacs/describe-system-info
+  "hdt" 'describe-theme
+  "hdv" 'describe-variable
+  "hI"  'spacemacs/report-issue
+  "hn"  'view-emacs-news
+  "hPs" 'profiler-start
+  "hPk" 'profiler-stop
+  "hPr" 'profiler-report
+  "hPw" 'profiler-report-write-profile
+  "hTe" 'emacs-tutorial)
 ;; insert stuff ---------------------------------------------------------------
-(map! :leader :n
-      "iJ" 'spacemacs/insert-line-below-no-indent
-      "iK" 'spacemacs/insert-line-above-no-indent
-      "ik" 'spacemacs/evil-insert-line-above
-      "ij" 'spacemacs/evil-insert-line-below
-      "ib" 'insert-buffer)
+(spacemacs/set-leader-keys
+  "iJ" 'spacemacs/insert-line-below-no-indent
+  "iK" 'spacemacs/insert-line-above-no-indent
+  "ik" 'spacemacs/evil-insert-line-above
+  "ij" 'spacemacs/evil-insert-line-below
+  "ib" 'insert-buffer)
 ;; format ---------------------------------------------------------------------
-(map! :leader :n
-      "j(" 'check-parens
-      "j=" 'spacemacs/indent-region-or-buffer
-      "j+" 'spacemacs/iwb-region-or-buffer
-      "jo" 'open-line
-      "jS" 'spacemacs/split-and-new-line
-      "jk" 'spacemacs/evil-goto-next-line-and-indent)
+(spacemacs/set-leader-keys
+  "j(" 'check-parens
+  "j=" 'spacemacs/indent-region-or-buffer
+  "j+" 'spacemacs/iwb-region-or-buffer
+  "jo" 'open-line
+  "jS" 'spacemacs/split-and-new-line
+  "jk" 'spacemacs/evil-goto-next-line-and-indent)
 
 ;; navigation/jumping ---------------------------------------------------------
-(map! :leader :n
-      "j0" 'spacemacs/push-mark-and-goto-beginning-of-line
-      "j$" 'spacemacs/push-mark-and-goto-end-of-line
-      "jc" 'goto-last-change
-      "jf" 'find-function
-      "jv" 'find-variable)
+(spacemacs/set-leader-keys
+  "j0" 'spacemacs/push-mark-and-goto-beginning-of-line
+  "j$" 'spacemacs/push-mark-and-goto-end-of-line
+  "jc" 'goto-last-change
+  "jf" 'find-function
+  "jv" 'find-variable)
 
 ;; Compilation ----------------------------------------------------------------
-(map! :leader :n
-      "cC" 'compile
-      "ck" 'kill-compilation
-      "cr" 'recompile
-      "cd" 'spacemacs/close-compilation-window)
+(spacemacs/set-leader-keys
+  "cC" 'compile
+  "ck" 'kill-compilation
+  "cr" 'recompile
+  "cd" 'spacemacs/close-compilation-window)
 (with-eval-after-load 'compile
   (evil-define-key 'motion compilation-mode-map (kbd "gf") 'find-file-at-point)
   (define-key compilation-mode-map "r" 'recompile)
   (define-key compilation-mode-map "g" nil))
 ;; narrow & widen -------------------------------------------------------------
-(map! :leader :n
-      "nr" 'narrow-to-region
-      "np" 'narrow-to-page
-      "nf" 'narrow-to-defun
-      "nw" 'widen)
+(spacemacs/set-leader-keys
+  "nr" 'narrow-to-region
+  "np" 'narrow-to-page
+  "nf" 'narrow-to-defun
+  "nw" 'widen)
 ;; toggle ---------------------------------------------------------------------
 (spacemacs|add-toggle highlight-current-line-globally
   :mode global-hl-line-mode
@@ -548,15 +537,13 @@ respond to this toggle."
   :documentation "Display the menu bar."
   :evil-leader "Tm")
 ;; quit -----------------------------------------------------------------------
-(map! :leader :n
+(spacemacs/set-leader-keys
       "qs" 'doom/quicksave-session ; original: spacemacs/save-buffers-kill-emacs
       "qq" 'save-buffers-kill-terminal ; original: spacemacs/prompt-kill-emacs
       "qQ" 'evil-quit-all-with-error-code ; original: spacemacs/kill-emacs
       "qf" 'doom/delete-frame) ; original: spacemacs/frame-killer)
 ;; ;; timeclock ------------------------------------------------------------------
-(map! :leader
-      "t t" nil)
-(map! :leader :n
+(spacemacs/set-leader-keys
       "ttc" 'timeclock-change
       "tte" 'timeclock-workday-elapsed-string
       "ttg" 'timeclock-workday-remaining-string
@@ -588,107 +575,103 @@ respond to this toggle."
              (symbol-value golden-ratio-mode))
     (golden-ratio)))
 
-(map! :leader
-      "wc" nil)
-(map! :leader :n
-      "w TAB"  'spacemacs/alternate-window
-      "w1"  'spacemacs/window-split-single-column
-      "w2"  'spacemacs/window-split-double-columns
-      "w3"  'spacemacs/window-split-triple-columns
-      "w4"  'spacemacs/window-split-grid
-      "wb"  'spacemacs/switch-to-minibuffer-window
-      "wd"  'spacemacs/delete-window
-      "wt"  'spacemacs/toggle-current-window-dedication
-      "wf"  'follow-mode
-      "wF"  'make-frame
-      "wH"  'evil-window-move-far-left
-      "w <S-left>"  'evil-window-move-far-left
-      "wh"  'evil-window-left
-      "w <left>"  'evil-window-left
-      "wJ"  'evil-window-move-very-bottom
-      "w <S-down>"  'evil-window-move-very-bottom
-      "wj"  'evil-window-down
-      "w <down>"  'evil-window-down
-      "wK"  'evil-window-move-very-top
-      "w <S-up>"  'evil-window-move-very-top
-      "wk"  'evil-window-up
-      "w <up>"  'evil-window-up
-      "wL"  'evil-window-move-far-right
-      "w <S-right>"  'evil-window-move-far-right
-      "wl"  'evil-window-right
-      "w <right>"  'evil-window-right
-      "wm"  'spacemacs/toggle-maximize-buffer
-      "wcc"  'spacemacs/toggle-centered-buffer
-      "wcC"  'spacemacs/toggle-distraction-free
-      "wc."  'spacemacs/centered-buffer-transient-state
-      "wo"  'other-frame
-      "wr"  'spacemacs/rotate-windows-forward
-      "wR"  'spacemacs/rotate-windows-backward
-      "ws"  'split-window-below
-      "wS"  'split-window-below-and-focus
-      "w-"  'split-window-below
-      "wU"  'winner-redo
-      "wu"  'winner-undo
-      "wv"  'split-window-right
-      "wV"  'split-window-right-and-focus
-      "ww"  'other-window
-      "wx"  'kill-buffer-and-window
-      "w/"  'split-window-right
-      "w="  'balance-windows-area
-      "w+"  'spacemacs/window-layout-toggle
-      "w_"  'spacemacs/maximize-horizontally
-      "w|"  'spacemacs/maximize-vertically)
+(spacemacs/set-leader-keys
+  "w TAB"  'spacemacs/alternate-window
+  "w1"  'spacemacs/window-split-single-column
+  "w2"  'spacemacs/window-split-double-columns
+  "w3"  'spacemacs/window-split-triple-columns
+  "w4"  'spacemacs/window-split-grid
+  "wb"  'spacemacs/switch-to-minibuffer-window
+  "wd"  'spacemacs/delete-window
+  "wt"  'spacemacs/toggle-current-window-dedication
+  "wf"  'follow-mode
+  "wF"  'make-frame
+  "wH"  'evil-window-move-far-left
+  "w <S-left>"  'evil-window-move-far-left
+  "wh"  'evil-window-left
+  "w <left>"  'evil-window-left
+  "wJ"  'evil-window-move-very-bottom
+  "w <S-down>"  'evil-window-move-very-bottom
+  "wj"  'evil-window-down
+  "w <down>"  'evil-window-down
+  "wK"  'evil-window-move-very-top
+  "w <S-up>"  'evil-window-move-very-top
+  "wk"  'evil-window-up
+  "w <up>"  'evil-window-up
+  "wL"  'evil-window-move-far-right
+  "w <S-right>"  'evil-window-move-far-right
+  "wl"  'evil-window-right
+  "w <right>"  'evil-window-right
+  "wm"  'spacemacs/toggle-maximize-buffer
+  "wcc"  'spacemacs/toggle-centered-buffer
+  "wcC"  'spacemacs/toggle-distraction-free
+  "wc."  'spacemacs/centered-buffer-transient-state
+  "wo"  'other-frame
+  "wr"  'spacemacs/rotate-windows-forward
+  "wR"  'spacemacs/rotate-windows-backward
+  "ws"  'split-window-below
+  "wS"  'split-window-below-and-focus
+  "w-"  'split-window-below
+  "wU"  'winner-redo
+  "wu"  'winner-undo
+  "wv"  'split-window-right
+  "wV"  'split-window-right-and-focus
+  "ww"  'other-window
+  "wx"  'kill-buffer-and-window
+  "w/"  'split-window-right
+  "w="  'balance-windows-area
+  "w+"  'spacemacs/window-layout-toggle
+  "w_"  'spacemacs/maximize-horizontally
+  "w|"  'spacemacs/maximize-vertically)
 ;; text -----------------------------------------------------------------------
 (defalias 'count-region 'count-words-region)
 
-(map! :leader
-      "x" nil)
-(map! :leader :n
-      "xa%" 'spacemacs/align-repeat-percent
-      "xa&" 'spacemacs/align-repeat-ampersand
-      "xa(" 'spacemacs/align-repeat-left-paren
-      "xa)" 'spacemacs/align-repeat-right-paren
-      "xa{" 'spacemacs/align-repeat-left-curly-brace
-      "xa}" 'spacemacs/align-repeat-right-curly-brace
-      "xa[" 'spacemacs/align-repeat-left-square-brace
-      "xa]" 'spacemacs/align-repeat-right-square-brace
-      "xa," 'spacemacs/align-repeat-comma
-      "xa." 'spacemacs/align-repeat-decimal
-      "xa:" 'spacemacs/align-repeat-colon
-      "xa;" 'spacemacs/align-repeat-semicolon
-      "xa=" 'spacemacs/align-repeat-equal
-      "xa\\" 'spacemacs/align-repeat-backslash
-      "xaa" 'align
-      "xac" 'align-current
-      "xam" 'spacemacs/align-repeat-math-oper
-      "xar" 'spacemacs/align-repeat
-      "xa|" 'spacemacs/align-repeat-bar
-      "xc"  'count-region
-      "xd SPC" 'cycle-spacing
-      "xdw" 'delete-trailing-whitespace
-      "xjc" 'set-justification-center
-      "xjf" 'set-justification-full
-      "xjl" 'set-justification-left
-      "xjn" 'set-justification-none
-      "xjr" 'set-justification-right
-      "xlc" 'spacemacs/sort-lines-by-column
-      "xlC" 'spacemacs/sort-lines-by-column-reverse
-      "xld" 'spacemacs/duplicate-line-or-region
-      "xlr" 'spacemacs/randomize-lines
-      "xls" 'spacemacs/sort-lines
-      "xlS" 'spacemacs/sort-lines-reverse
-      "xlu" 'spacemacs/uniquify-lines
-      "xtc" 'transpose-chars
-      "xte" 'transpose-sexps
-      "xtl" 'transpose-lines
-      "xtp" 'transpose-paragraphs
-      "xts" 'transpose-sentences
-      "xtw" 'transpose-words
-      "xU"  'upcase-region
-      "xu"  'downcase-region
-      "xwc" 'spacemacs/count-words-analysis
-      "xwr" 'spacemacs/randomize-words
-      "x TAB" 'indent-rigidly)
+(spacemacs/set-leader-keys
+  "xa%" 'spacemacs/align-repeat-percent
+  "xa&" 'spacemacs/align-repeat-ampersand
+  "xa(" 'spacemacs/align-repeat-left-paren
+  "xa)" 'spacemacs/align-repeat-right-paren
+  "xa{" 'spacemacs/align-repeat-left-curly-brace
+  "xa}" 'spacemacs/align-repeat-right-curly-brace
+  "xa[" 'spacemacs/align-repeat-left-square-brace
+  "xa]" 'spacemacs/align-repeat-right-square-brace
+  "xa," 'spacemacs/align-repeat-comma
+  "xa." 'spacemacs/align-repeat-decimal
+  "xa:" 'spacemacs/align-repeat-colon
+  "xa;" 'spacemacs/align-repeat-semicolon
+  "xa=" 'spacemacs/align-repeat-equal
+  "xa\\" 'spacemacs/align-repeat-backslash
+  "xaa" 'align
+  "xac" 'align-current
+  "xam" 'spacemacs/align-repeat-math-oper
+  "xar" 'spacemacs/align-repeat
+  "xa|" 'spacemacs/align-repeat-bar
+  "xc"  'count-region
+  "xd SPC" 'cycle-spacing
+  "xdw" 'delete-trailing-whitespace
+  "xjc" 'set-justification-center
+  "xjf" 'set-justification-full
+  "xjl" 'set-justification-left
+  "xjn" 'set-justification-none
+  "xjr" 'set-justification-right
+  "xlc" 'spacemacs/sort-lines-by-column
+  "xlC" 'spacemacs/sort-lines-by-column-reverse
+  "xld" 'spacemacs/duplicate-line-or-region
+  "xlr" 'spacemacs/randomize-lines
+  "xls" 'spacemacs/sort-lines
+  "xlS" 'spacemacs/sort-lines-reverse
+  "xlu" 'spacemacs/uniquify-lines
+  "xtc" 'transpose-chars
+  "xte" 'transpose-sexps
+  "xtl" 'transpose-lines
+  "xtp" 'transpose-paragraphs
+  "xts" 'transpose-sentences
+  "xtw" 'transpose-words
+  "xU"  'upcase-region
+  "xu"  'downcase-region
+  "xwc" 'spacemacs/count-words-analysis
+  "xwr" 'spacemacs/randomize-words
+  "x TAB" 'indent-rigidly)
 
 (define-key indent-rigidly-map "h" 'indent-rigidly-left)
 (define-key indent-rigidly-map "l" 'indent-rigidly-right)
@@ -755,7 +738,7 @@ respond to this toggle."
   ("C-7" winum-select-window-7)
   ("C-8" winum-select-window-8)
   ("C-9" winum-select-window-9))
-(map! :leader :n "b." 'spacemacs/buffer-transient-state/body)
+(spacemacs/set-leader-keys "b." 'spacemacs/buffer-transient-state/body)
 
 ;; end of Buffer Transient State
 
@@ -881,12 +864,12 @@ Select: _a_ _h_ _j_ _k_ _l_ _w_ _0_.._9_ Move: _H_ _J_ _K_ _L_ _r_ _R_ Split: _s
   ("u" winner-undo)
   ("U" winner-redo)
   ("q" nil :exit t))
-(map! :leader :n
-      "w." 'spacemacs/window-transient-state/body
-      "w[" 'spacemacs/window-transient-state/spacemacs/shrink-window-horizontally
-      "w]" 'spacemacs/window-transient-state/spacemacs/enlarge-window-horizontally
-      "w{" 'spacemacs/window-transient-state/spacemacs/shrink-window
-      "w}" 'spacemacs/window-transient-state/spacemacs/enlarge-window)
+(spacemacs/set-leader-keys
+  "w." 'spacemacs/window-transient-state/body
+  "w[" 'spacemacs/window-transient-state/spacemacs/shrink-window-horizontally
+  "w]" 'spacemacs/window-transient-state/spacemacs/enlarge-window-horizontally
+  "w{" 'spacemacs/window-transient-state/spacemacs/shrink-window
+  "w}" 'spacemacs/window-transient-state/spacemacs/enlarge-window)
 
 ;; end of Window Transient State
 
@@ -931,7 +914,7 @@ otherwise it is scaled down."
   ("0" spacemacs/reset-font-size)
   ("q" nil :exit t))
 
-(map! :leader :n "zx" 'spacemacs/scale-font-transient-state/body)
+(spacemacs/set-leader-keys "zx" 'spacemacs/scale-font-transient-state/body)
 
 ;; end of Text Transient State
 
@@ -999,8 +982,8 @@ If FRAME is nil, it defaults to the selected frame."
   ("j" spacemacs/decrease-transparency)
   ("T" spacemacs/toggle-transparency)
   ("q" nil :exit t))
-(map! :leader :n "TT"
-      'spacemacs/scale-transparency-transient-state/spacemacs/toggle-transparency)
+(spacemacs/set-leader-keys "TT"
+  'spacemacs/scale-transparency-transient-state/spacemacs/toggle-transparency)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

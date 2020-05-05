@@ -349,7 +349,7 @@ Will work on both org-mode and any mode that accepts plain html."
       (spacemacs/declare-prefix "ao" "org")
       (spacemacs/declare-prefix "aof" "feeds")
       (spacemacs/declare-prefix "aoC" "clock")
-      (map! :leader :n
+      (spacemacs/set-leader-keys
         ;; org-agenda
         "ao#" 'org-agenda-list-stuck-projects
         "ao/" 'org-occur-in-agenda-files
@@ -575,7 +575,7 @@ Headline^^            Visit entry^^               Filter^^                    Da
     :init
     (progn
       (spacemacs/declare-prefix "aoB" "org-brain")
-      (map! :leader :n
+      (spacemacs/set-leader-keys
         "aoBv" 'org-brain-visualize
         "aoBa" 'org-brain-agenda)
       (spacemacs/declare-prefix-for-mode 'org-mode "mB" "org-brain")
@@ -631,7 +631,7 @@ Headline^^            Visit entry^^               Filter^^                    Da
       (spacemacs/declare-prefix "aoJs" "subtasks")
       (spacemacs/declare-prefix "aoJc" "comments")
       (spacemacs/declare-prefix "aoJt" "todos")
-      (map! :leader :n
+      (spacemacs/set-leader-keys
         "aoJpg" 'org-jira-get-projects
         "aoJib" 'org-jira-browse-issue
         "aoJig" 'org-jira-get-issues
@@ -713,7 +713,7 @@ Headline^^            Visit entry^^               Filter^^                    Da
     :commands (org-projectile-location-for-project)
     :init
     (progn
-      (map! :leader :n
+      (spacemacs/set-leader-keys
         "aop" 'org-projectile/capture
         "po" 'org-projectile/goto-todos)
       (with-eval-after-load 'org-capture
@@ -759,7 +759,7 @@ Headline^^            Visit entry^^               Filter^^                    Da
     :init
     (progn
       (spacemacs/declare-prefix "aoj" "org-journal")
-      (map! :leader :n
+      (spacemacs/set-leader-keys
         "aojj" 'org-journal-new-entry
         "aojs" 'org-journal-search-forever)
 
