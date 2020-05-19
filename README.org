@@ -41,6 +41,7 @@ And install the missing packages in ~packages.el~
 (package! move-text) ;; for spacemacs-editing
 (package! string-inflection) ;; for spacemacs-editing
 (package! forge) ;; for github layer
+(package! evil-terminal-cursor-changer) ;; for spacemacs evil
 #+END_SRC
 ** IMPORTANT: Adjust ~+spacemacs~ based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
