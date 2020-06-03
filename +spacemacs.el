@@ -142,6 +142,10 @@ Useful for making the home buffer the only visible buffer in the frame."
 (load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/funcs.el"))
 (load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/packages.el"))
 
+(load! (concat spacemacs-path "spacemacs/layer/shell/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/shell/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/shell/packages.el"))
+
 ;;; initialise layers
 
 ; (spacemacs-defaults/init-abbrev)
@@ -271,3 +275,5 @@ Useful for making the home buffer the only visible buffer in the frame."
 ;; (spacemacs-evil/init-linum-relative)
 ;; (spacemacs-evil/init-vi-tilde-fringe)
 (setq dotspacemacs-folding-method 'evil)
+
+(shell/init-eshell)
