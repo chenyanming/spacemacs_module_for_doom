@@ -277,4 +277,3 @@ Useful for making the home buffer the only visible buffer in the frame."
 (setq dotspacemacs-folding-method 'evil)
 
 (shell/init-eshell)
-(shell/init-eshell-prompt-extras)
