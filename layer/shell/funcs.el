@@ -159,9 +159,10 @@ is achieved by adding the relevant text properties."
 
   ;; These don't work well in normal state
   ;; due to evil/emacs cursor incompatibility
-  (evil-define-key 'insert eshell-mode-map
-    (kbd "C-k") 'eshell-previous-matching-input-from-input
-    (kbd "C-j") 'eshell-next-matching-input-from-input))
+  ;; (evil-define-key 'insert eshell-mode-map
+  ;;   (kbd "C-k") 'eshell-previous-matching-input-from-input
+  ;;   (kbd "C-j") 'eshell-next-matching-input-from-input)
+  )
 
 (defun spacemacs/helm-eshell-history ()
   "Correctly revert to insert state after selection."
