@@ -18,7 +18,7 @@ https://github.com/chenyanming/spacemacs_module_for_doom/pull/2
 ** Enable necessary modules in ~init.el~
 Make sure enable the necessary modules in ~init.el~.
 
-At lease evil, org, gist, pdf, lookup, workspaces, and javascript.
+At lease evil, org, gist, pdf, lookup, workspaces, eshell, and javascript etc.
 
 In order to use the windows transient state properly, please add ~+numbers~ for
 ~windows-select~ module.
