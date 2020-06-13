@@ -306,3 +306,11 @@ Useful for making the home buffer the only visible buffer in the frame."
 (shell/init-eshell)
 (shell/init-vterm)
 
+
+;; json layer
+(load! (concat spacemacs-path "spacemacs/layer/json/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/json/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/json/packages.el"))
+(json/init-json-navigator)
+(json/init-json-reformat)
+(json/init-json-snatcher)
