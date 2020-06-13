@@ -62,16 +62,6 @@ defer call using `spacemacs-post-user-config-hook'."
 
 (setq version-control-diff-tool 'git-gutter)
 
-(defmacro spacemacs/set-leader-keys (&rest rest)
-  "redefine the spacemcas/set-leader-keys macro"
-  ;; (setq doom--map-fn 'doom--define-leader-key)
-  ;; (doom--map-keyword-to-states :n)
-  ;; (setq doom--map-state '(:n t))
-  ;; (message rest)
-  (doom--map-process (cons :leader (cons :n rest) ))
-  ;; (doom--map-process (cons '(:n) 'rest))
-  ;; (doom--map-process (apply 'concat :n  rest))
-  )
 
 (defvar dotspacemacs-default-layout-name "Default"
   "Name of the default layout.")
@@ -85,8 +75,9 @@ Useful for making the home buffer the only visible buffer in the frame."
   (+doom-dashboard/open (selected-frame))
   (delete-other-windows))
 
+;;; map
 
-;;; unmap the doom original key prefix
+;; unmap the doom original key prefix
 (map! :leader
       "gg" nil
       "bN" nil
@@ -100,8 +91,19 @@ Useful for making the home buffer the only visible buffer in the frame."
       "wc" nil
       "x" nil)
 
-;;; define some simple but important keys with map! which is easier than using
-;;; spacemacs ways to define.
+(defmacro spacemacs/set-leader-keys (&rest rest)
+  "redefine the spacemcas/set-leader-keys macro"
+  ;; (setq doom--map-fn 'doom--define-leader-key)
+  ;; (doom--map-keyword-to-states :n)
+  ;; (setq doom--map-state '(:n t))
+  ;; (message rest)
+  (doom--map-process (cons :leader (cons :n rest) ))
+  ;; (doom--map-process (cons '(:n) 'rest))
+  ;; (doom--map-process (apply 'concat :n  rest))
+  )
+
+;; define some simple but important keys with map! which is easier than using
+;; spacemacs ways to define.
 (map! :leader
       (:when (featurep! :completion ivy)
         :desc "M-x"                     :n "SPC" #'counsel-M-x))
@@ -109,45 +111,52 @@ Useful for making the home buffer the only visible buffer in the frame."
       (:when (featurep! :completion helm)
         :desc "M-x"                     :n "SPC" #'helm-M-x))
 
-;;;  load the modified spacemacs layers packages
+;;; Layers
+
+;; load the modified spacemacs layers packages
+;; initialise layers
+
+;; org layer
 (load! (concat spacemacs-path "spacemacs/layer/org/packages.el"))
+(org/init-org)
+;; (org/post-init-org)
+(org/init-org-agenda)
+(org/init-org-brain)
+(org/init-org-expiry)
+(org/init-org-download)
+(org/init-org-jira)
+(org/init-org-mime)
+(org/init-org-pomodoro)
+(org/init-org-present)
+(org/init-org-cliplink)
+;; (org/init-org-projectile)
+;; (org/pre-init-org-re-reveal)
+;; (org/init-org-re-reveal )
+(org/init-org-journal)
+;; (org/init-org-trello)
+;; (org/init-org-sticky-header)
+
+
+;; pdf layer
 (load! (concat spacemacs-path "spacemacs/layer/pdf/packages.el"))
+(pdf/init-pdf-tools)
+
+;; epub layer
 (load! (concat spacemacs-path "spacemacs/layer/epub/packages.el"))
+(epub/init-nov)
+
+;; dash layer
 (load! (concat spacemacs-path "spacemacs/layer/dash/packages.el"))
 ;; (load! (concat spacemacs-path "spacemacs/layer/dash/config.el"))
 ;; (load! (concat spacemacs-path "spacemacs/layer/dash/funcs.el"))
+(dash/init-dash-at-point)
+;;(dash/init-counsel-dash)
+
+
+
+;; spacemacs defaults layer
 (load! (concat spacemacs-path "spacemacs/layer/spacemacs-defaults/funcs.el"))
 (load! (concat spacemacs-path "spacemacs/layer/spacemacs-defaults/keybindings.el"))
-;; (load! (concat spacemacs-path "spacemacs/layer/version-control/packages.el"))
-(load! (concat spacemacs-path "spacemacs/layer/version-control/keybindings.el"))
-(load! (concat spacemacs-path "spacemacs/layer/version-control/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/version-control/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/github/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/github/packages.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-navigation/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-navigation/packages.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/packages.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/bm/packages.el"))
-
-(load! (concat spacemacs-path "spacemacs/layer/git/packages.el"))
-
-(load! (concat spacemacs-path "spacemacs/layer/javascript/packages.el"))
-(load! (concat spacemacs-path "spacemacs/layer/javascript/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/javascript/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-editing/packages.el"))
-
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/packages.el"))
-
-(load! (concat spacemacs-path "spacemacs/layer/shell/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/shell/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/shell/packages.el"))
-
-;;; initialise layers
-
 ; (spacemacs-defaults/init-abbrev)
 ; (spacemacs-defaults/init-archive-mode)
 ; (spacemacs-defaults/init-bookmark)
@@ -178,25 +187,22 @@ Useful for making the home buffer the only visible buffer in the frame."
 ; (spacemacs-defaults/init-whitespace)
 ; (spacemacs-defaults/init-winner)
 ;; (spacemacs-defaults/init-zone)
+(setq hydra--work-around-dedicated nil) ; help lv to work https://github.com/abo-abo/hydra/issues/329, even setup this, lv can still has bug with SPC-l-n or SPC-l-p
+;; "message" is flickering when SPC-w.-[or]
+;;(setq hydra-hint-display-type 'message)
+;; since "lv" is not work well on doom even set work around to nil, SPC-l-n or p will create relundant windows
+(setq hydra-hint-display-type 'lv)
+;; posframe seems great
+;;(setq hydra-hint-display-type 'posframe)
+;; (setq hydra--work-around-dedicated nil)
 
-(org/init-org)
-;; (org/post-init-org)
-(org/init-org-agenda)
-(org/init-org-brain)
-(org/init-org-expiry)
-(org/init-org-download)
-(org/init-org-jira)
-(org/init-org-mime)
-(org/init-org-pomodoro)
-(org/init-org-present)
-(org/init-org-cliplink)
-;; (org/init-org-projectile)
-;; (org/pre-init-org-re-reveal)
-;; (org/init-org-re-reveal )
-(org/init-org-journal)
-;; (org/init-org-trello)
-;; (org/init-org-sticky-header)
 
+
+;; version control layer
+;; (load! (concat spacemacs-path "spacemacs/layer/version-control/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/version-control/keybindings.el"))
+(load! (concat spacemacs-path "spacemacs/layer/version-control/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/version-control/config.el"))
 ;; (version-control/init-vc)
 ;; (version-control/init-diff-mode)
 ;; (version-control/init-diff-hl)
@@ -208,34 +214,45 @@ Useful for making the home buffer the only visible buffer in the frame."
 ;; (version-control/init-smerge-mode)
 ;; (version-control/init-browse-at-remote)
 
+
+;; github layer
+(load! (concat spacemacs-path "spacemacs/layer/github/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/github/packages.el"))
 (github/init-forge)
 (github/init-gist)
 (github/init-github-clone)
 (github/init-github-search)
-;github/init-spacemacs-github ()
+;; github/init-spacemacs-github ()
 
 
-(pdf/init-pdf-tools)
-(epub/init-nov)
-(dash/init-dash-at-point)
-;;(dash/init-counsel-dash)
-
-
-(setq hydra--work-around-dedicated nil) ; help lv to work https://github.com/abo-abo/hydra/issues/329, even setup this, lv can still has bug with SPC-l-n or SPC-l-p
-;; "message" is flickering when SPC-w.-[or]
-;;(setq hydra-hint-display-type 'message)
-;; since "lv" is not work well on doom even set work around to nil, SPC-l-n or p will create relundant windows
-(setq hydra-hint-display-type 'lv)
-;; posframe seems great
-;;(setq hydra-hint-display-type 'posframe)
-;; (setq hydra--work-around-dedicated nil)
+;; spacemacs navigation layer
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-navigation/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-navigation/packages.el"))
 (spacemacs-navigation/init-auto-highlight-symbol)
 (spacemacs-navigation/init-symbol-overlay)
+
+
+;; spacemacs layouts layer
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/config.el"))
 (spacemacs-layouts/init-eyebrowse)
 (spacemacs-layouts/init-persp-mode)
+
+
+;; bm layer
+(load! (concat spacemacs-path "spacemacs/layer/bm/packages.el"))
 (bm/init-bm)
+
+
+;; git layer
+(load! (concat spacemacs-path "spacemacs/layer/git/packages.el"))
 (git/init-git-timemachine)
 
+;; javascript layer
+(load! (concat spacemacs-path "spacemacs/layer/javascript/packages.el"))
+(load! (concat spacemacs-path "spacemacs/layer/javascript/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/javascript/funcs.el"))
 (javascript/init-js2-mode)
 ;; you can only choose either nodejs or skewer
 (setq javascript-repl 'nodejs)          ; choose nodejs
@@ -243,13 +260,19 @@ Useful for making the home buffer the only visible buffer in the frame."
 ;;(setq javascript-repl 'skewer)        ; choose skewer
 ;;(javascript/init-skewer-mode)
 
+
+;; spacemacs editing layer
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-editing/packages.el"))
 (spacemacs-editing/init-avy)
 (spacemacs-editing/init-expand-region)
 (spacemacs-editing/init-link-hint)
 (spacemacs-editing/init-move-text)
 (spacemacs-editing/init-string-inflection)
 
-
+;; spacemacs evil layer
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/packages.el"))
 ;; (spacemacs-evil/init-evil-anzu)
 ;; (spacemacs-evil/init-evil-args)
 ;; (spacemacs-evil/init-evil-cleverparens)
@@ -276,5 +299,10 @@ Useful for making the home buffer the only visible buffer in the frame."
 ;; (spacemacs-evil/init-vi-tilde-fringe)
 (setq dotspacemacs-folding-method 'evil)
 
+;; shell layer
+(load! (concat spacemacs-path "spacemacs/layer/shell/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/shell/funcs.el"))
+(load! (concat spacemacs-path "spacemacs/layer/shell/packages.el"))
 (shell/init-eshell)
 (shell/init-vterm)
+
