@@ -19,7 +19,7 @@
 (defun dotspacemacs/location ()
   "Dot file location - SPC-f-e-d"
   ;; (doom/find-file-in-private-config)
-  (doom/goto-private-config-file))
+  (expand-file-name "config.el" doom-private-dir))
 
 ;; (setq dotspacemacs-persistent-server t)
 (load! (concat spacemacs-path "spacemacs/core/core-funcs.el"))
