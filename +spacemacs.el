@@ -314,3 +314,5 @@ Useful for making the home buffer the only visible buffer in the frame."
 (json/init-json-navigator)
 (json/init-json-reformat)
 (json/init-json-snatcher)
+
+(defalias 'iedit-lib-cleanup 'iedit-cleanup)
