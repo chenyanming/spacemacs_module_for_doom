@@ -19,7 +19,6 @@
     ;; (evilified-state-evilify-map nov-mode-map
     (evil-define-key 'normal nov-mode-map
       ;; :mode nov-mode
-      :bindings
       (kbd "H") 'nov-previous-document
       (kbd "L") 'nov-next-document
       (kbd "[") 'nov-previous-document
