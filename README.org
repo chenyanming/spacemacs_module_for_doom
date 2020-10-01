@@ -27,7 +27,7 @@ In order to use the windows transient state properly, please add ~+numbers~ for
         +numbers)
 #+END_SRC
 
-** Add missing pacakges in ~packages.el~
+** Add missing packages in ~packages.el~
 And install the missing packages in ~packages.el~
 
 #+BEGIN_SRC emacs-lisp
