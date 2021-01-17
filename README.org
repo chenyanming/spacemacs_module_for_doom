@@ -88,7 +88,7 @@ Enjoy~
 7. Some transient states:
    - Windows Transient State: ~SPC-w-.~
    - Symbol Overlay Transient State: ~SPC-s-o~
-   - Symbol Highlight Transient State: ~SPC-s-h~
+   - Symbol Highlight Transient State: ~SPC-s-h~ / ~*~ / ~#~
    - Buffer Transient State: ~SPC-b-.~
    - Error Transient State: ~SPC-e-.~
    - Font Scaling Transient State: ~SPC-z-x~
