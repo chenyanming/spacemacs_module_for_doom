@@ -17,7 +17,7 @@
 
 ;; paths
 (defvar spacemacs-start-directory
-  user-emacs-directory
+  (concat spacemacs-path "spacemacs/")
   "Spacemacs start directory.")
 (defconst spacemacs-core-directory
   (expand-file-name (concat spacemacs-start-directory "core/"))
@@ -83,4 +83,3 @@
 ;; themes
 (add-to-list 'custom-theme-load-path (concat spacemacs-core-directory
                                              "libs/spacemacs-theme/"))
-

@@ -3,7 +3,7 @@
 ;;; Setup & load spacmeacs core packages
 
 (if (not (bound-and-true-p spacemacs-path))
-    (setq spacemacs-path "~/.doom.d/modules/"))
+    (defvar spacemacs-path "~/.doom.d/modules/"))
 
 (setq dotspacemacs-editing-style 'vim)
 (setq dotspacemacs-emacs-command-key "SPC")
@@ -15,6 +15,58 @@
 (setq spacemacs-cache-directory doom-cache-dir)
 (setq which-key-idle-delay 0.4)
 (setq which-key-idle-secondary-delay 0.1)
+
+;;; Setup spacmeacs buffer
+
+(load! (concat spacemacs-path "spacemacs/core/core-load-paths.el"))
+(defcustom dotspacemacs-startup-lists '((recents  . 5)
+                                     ;; (bookmarks . 8)
+                                     ;; (projects . 7)
+                                     ;; (agenda . 7)
+                                     ;; (todos . 7)
+                                     )
+  "Association list of items to show in the startup buffer of the form
+`(list-type . list-size)`. If nil it is disabled.
+
+;; Possible values for list-type are:
+;; `recents' `bookmarks' `projects' `agenda' `todos'.
+;; List sizes may be nil, in which case
+;; `spacemacs--buffer-startup-lists-length' takes effect.")
+
+(defvar dotspacemacs-filepath ""
+  "Filepath to the installed dotfile. If SPACEMACSDIR is given
+then SPACEMACSDIR/init.el is used. Otherwise, if ~/.spacemacs
+exists, then this is used. If ~/.spacemacs does not exist, then
+check for init.el in dotspacemacs-directory and use this if it
+exists. Otherwise, fallback to ~/.spacemacs")
+
+(defvar dotspacemacs-startup-buffer-responsive t
+  "True if the home buffer should respond to resize events.")
+
+(defvar spacemacs-version doom-version)
+
+(defvar dotspacemacs-distribution 'doom
+  "Base distribution to use. This is a layer contained in the directory
+`+distributions'. For now available distributions are `spacemacs-base'
+or `spacemacs'.")
+
+(defcustom dotspacemacs-startup-banner 'cat
+  "Specify the startup banner. Default value is `official', it displays
+the official spacemacs logo. An integer value is the index of text
+banner, `random' chooses a random text banner in `core/banners'
+directory. A string value must be a path to a .PNG file.
+If the value is nil then no banner is displayed.")
+
+(defvar spacemacs-initialized t
+  "Whether or not spacemacs has finished initializing by completing
+the final step of executing code in `emacs-startup-hook'.")
+
+(load! (concat spacemacs-path "spacemacs/core/libs/page-break-lines.el"))
+(require 'page-break-lines)
+(load! (concat spacemacs-path "spacemacs/core/core-spacemacs-buffer.el"))
+
+;; setup the dashboard name
+(setq spacemacs-buffer-name "*Home*")
 
 (defun dotspacemacs/location ()
   "Dot file location - SPC-f-e-d"

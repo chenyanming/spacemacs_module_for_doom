@@ -16,7 +16,7 @@
 (defconst spacemacs-buffer-version-info "0.300"
   "Current version used to display addition release information.")
 
-(defconst spacemacs-buffer-name "*spacemacs*"
+(defcustom spacemacs-buffer-name "*spacemacs*"
   "The name of the spacemacs buffer.")
 
 (defconst spacemacs-buffer-logo-title "[S P A C E M A C S]"
@@ -77,7 +77,7 @@ Internal use, do not set this variable.")
 (with-eval-after-load 'evil
   (evil-make-overriding-map spacemacs-buffer-mode-map 'motion))
 
-(define-derived-mode spacemacs-buffer-mode fundamental-mode "Spacemacs buffer"
+(define-derived-mode spacemacs-buffer-mode fundamental-mode "Home"
   "Spacemacs major mode for startup screen."
   :group 'spacemacs
   :syntax-table nil
@@ -249,16 +249,22 @@ Right justified, based on the Spacemacs buffers window width."
            (heart-size (when heart (car (image-size heart))))
            (build-lhs "Made with ")
            (build-rhs " by the community")
+           (loader (doom-display-benchmark-h 'return))
            (buffer-read-only nil))
-      (when (or badge heart)
+      (when (or badge heart loader)
         (goto-char (point-max))
         (spacemacs-buffer/insert-page-break)
-        (insert "\n")
-        (when badge
-          (insert-image badge)
-          (spacemacs-buffer//center-line badge-size))
+        (when loader
+          (insert "\n")
+          (insert (propertize loader 'face 'shadow))
+          (spacemacs-buffer//center-line (length loader))
+          (insert "\n"))
+        ;; (insert "\n")
+        ;; (when badge
+        ;;   (insert-image badge)
+        ;;   (spacemacs-buffer//center-line badge-size))
         (when heart
-          (when badge (insert "\n\n"))
+          (when badge (insert "\n"))
           (insert build-lhs)
           (insert-image heart)
           (insert build-rhs)
@@ -620,32 +626,29 @@ REAL-WIDTH: the real width of the line.  If the line contains an image, the size
   (insert " ")
   (widget-create 'url-link
                  :tag (propertize "Homepage" 'face 'font-lock-keyword-face)
-                 :help-echo "Open the Spacemacs GitHub page in your browser."
+                 :help-echo "Open the Doom Emacs GitHub page in your browser."
                  :mouse-face 'highlight
                  :follow-link "\C-m"
-                 "http://spacemacs.org")
+                 "https://github.com/hlissner/doom-emacs")
   (insert " ")
   (widget-create 'url-link
                  :tag (propertize "Documentation" 'face 'font-lock-keyword-face)
                  :help-echo "Open the Spacemacs documentation in your browser."
+                 :action (lambda (&rest ignore)
+                           (doom/help))
                  :mouse-face 'highlight
                  :follow-link "\C-m"
                  "http://spacemacs.org/doc/DOCUMENTATION.html")
   (insert " ")
-  (widget-create 'url-link
-                 :tag (propertize "Gitter Chat" 'face 'font-lock-keyword-face)
-                 :help-echo
-                 "Ask questions and chat with fellow users in our chat room."
-                 :mouse-face 'highlight
-                 :follow-link "\C-m"
-                 "https://gitter.im/syl20bnr/spacemacs")
-  (insert " ")
   (widget-create 'push-button
-                 :help-echo "Update Spacemacs core and layers."
-                 :action (lambda (&rest ignore) (spacemacs/switch-to-version))
+                 :tag (propertize "Private Configuration" 'face 'font-lock-function-name-face)
+                 :help-echo
+                 "Open private configuration."
+                 :action (lambda (&rest ignore)
+                           (when (file-directory-p doom-private-dir)
+                             (doom/open-private-config)))
                  :mouse-face 'highlight
-                 :follow-link "\C-m"
-                 (propertize "Update Spacemacs" 'face 'font-lock-keyword-face))
+                 :follow-link "\C-m")
   (let ((len (- (line-end-position)
                 (line-beginning-position))))
     (spacemacs-buffer//center-line)
@@ -654,46 +657,39 @@ REAL-WIDTH: the real width of the line.  If the line contains an image, the size
                                                 len)))
   (insert "\n")
   (widget-create 'push-button
-                 :help-echo "Update all ELPA packages to the latest versions."
+                 :help-echo "Open org-agenda."
                  :action (lambda (&rest ignore)
-                           (configuration-layer/update-packages))
+                           (when (fboundp 'org-agenda)
+                             (call-interactively #'org-agenda)))
                  :mouse-face 'highlight
                  :follow-link "\C-m"
-                 (propertize "Update Packages" 'face 'font-lock-keyword-face))
+                 (propertize "Open org-agenda" 'face 'font-lock-function-name-face))
   (insert " ")
   (widget-create 'push-button
-                 :help-echo
-                 "Rollback ELPA package updates if something got borked."
+                 :help-echo "Recently opened files."
                  :action (lambda (&rest ignore)
-                           (call-interactively 'configuration-layer/rollback))
+                           (call-interactively #'recentf-open-files))
                  :mouse-face 'highlight
                  :follow-link "\C-m"
-                 (propertize "Rollback Package Update"
-                             'face 'font-lock-keyword-face))
+                 (propertize "Recently opened files" 'face 'font-lock-function-name-face))
   (spacemacs-buffer//center-line)
   (insert "\n")
   (widget-create 'push-button
-                 :tag (propertize "Release Notes"
-                                  'face 'font-lock-preprocessor-face)
-                 :help-echo "Hide or show the Changelog"
+                 :tag (propertize "Open project"
+                                  'face 'font-lock-function-name-face)
+                 :help-echo "Open project"
                  :action (lambda (&rest ignore)
-                           (spacemacs-buffer/toggle-note 'release-note))
+                           (call-interactively #'projectile-switch-project))
                  :mouse-face 'highlight
                  :follow-link "\C-m")
   (insert " ")
   (widget-create 'url-link
-                 :tag (propertize "Search in Spacemacs"
+                 :tag (propertize "Jump to bookmark"
                                   'face 'font-lock-function-name-face)
-                 :help-echo "Search Spacemacs contents."
+                 :help-echo "Jump to bookmark."
                  :action
                  (lambda (&rest ignore)
-                   (let ((comp-frontend
-                          (cond
-                           ((configuration-layer/layer-used-p 'helm)
-                            'helm-spacemacs-help)
-                           ((configuration-layer/layer-used-p 'ivy)
-                            'ivy-spacemacs-help))))
-                     (call-interactively comp-frontend)))
+                   (call-interactively #'bookmark-jump))
                  :mouse-face 'highlight
                  :follow-link "\C-m")
   (spacemacs-buffer//center-line)
@@ -909,8 +905,8 @@ SEQ, START and END are the same arguments as for `cl-subseq'"
                   (spacemacs-buffer||add-shortcut "c" "Agenda:")
                   (insert list-separator)))
                ((eq el 'bookmarks)
-                (when (configuration-layer/layer-used-p 'spacemacs-helm)
-                  (helm-mode))
+                ;; (when (configuration-layer/layer-used-p 'spacemacs-helm)
+                ;;   (helm-mode))
                 (require 'bookmark)
                 (when (spacemacs-buffer//insert-bookmark-list
                        "Bookmarks:"
@@ -1033,11 +1029,11 @@ REFRESH if the buffer should be redrawn."
           (spacemacs-buffer/insert-banner-and-buttons)
           (when (bound-and-true-p spacemacs-initialized)
             (spacemacs-buffer//notes-redisplay-current-note)
-            (configuration-layer/display-summary emacs-start-time)
+            ;; (configuration-layer/display-summary emacs-start-time)
             (when dotspacemacs-startup-lists
               (spacemacs-buffer/insert-startup-lists))
             (spacemacs-buffer//insert-footer)
-            (spacemacs-buffer/set-mode-line spacemacs--default-mode-line)
+            ;; (spacemacs-buffer/set-mode-line spacemacs--default-mode-line)
             (force-mode-line-update)
             (spacemacs-buffer-mode)))
         (if save-line

@@ -1,5 +1,8 @@
 * spacemacs module for doom emacs
 
+#+attr_org: :width 600px
+[[file:img/home.png]]
+
 Aim to port spacemacs features (keybindings, transient states, layers etc) to
 doom, and provides a spacemacs module for doom emacs.
 
@@ -50,6 +53,10 @@ them in ~+spacemacs.el~ if necessary.
 
 ** Load the module in ~config.el~
 ~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~
+
+To enable the spacemacs like dashboard, add this:
+~(add-hook 'doom-init-ui-hook #'spacemacs/home)~
+And comment out ~doom-dashboard~ in ~init.el~.
 
 ** Run ~./emacs.d/bin/doom sync~
 Then sync the doom.
