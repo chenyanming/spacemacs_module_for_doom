@@ -58,6 +58,11 @@ To enable the spacemacs like dashboard, add this:
 ~(add-hook 'doom-init-ui-hook #'spacemacs/home)~
 And comment out ~doom-dashboard~ in ~init.el~.
 
+Spacemacs dashboard may consume 0.2 second to boot after testing.
+
+Configure ~dotspacemacs-startup-banner~, ~dotspacemacs-startup-lists~ to control the dashboard
+details.
+
 ** Run ~./emacs.d/bin/doom sync~
 Then sync the doom.
 
