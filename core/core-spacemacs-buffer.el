@@ -633,14 +633,14 @@ REAL-WIDTH: the real width of the line.  If the line contains an image, the size
   (insert " ")
   (widget-create 'url-link
                  :tag (propertize "Documentation" 'face 'font-lock-keyword-face)
-                 :help-echo "Open the Spacemacs documentation in your browser."
+                 :help-echo "Open the Doom Emacs documentation."
                  :action (lambda (&rest ignore)
                            (doom/help))
                  :mouse-face 'highlight
                  :follow-link "\C-m"
                  "http://spacemacs.org/doc/DOCUMENTATION.html")
   (insert " ")
-  (widget-create 'push-button
+  (widget-create 'url-link
                  :tag (propertize "Private Configuration" 'face 'font-lock-function-name-face)
                  :help-echo
                  "Open private configuration."
@@ -656,28 +656,28 @@ REAL-WIDTH: the real width of the line.  If the line contains an image, the size
                                                 (line-beginning-position)
                                                 len)))
   (insert "\n")
-  (widget-create 'push-button
+  (widget-create 'url-link
+                 :tag (propertize "Open org-agenda" 'face 'font-lock-function-name-face)
                  :help-echo "Open org-agenda."
                  :action (lambda (&rest ignore)
                            (when (fboundp 'org-agenda)
                              (call-interactively #'org-agenda)))
                  :mouse-face 'highlight
-                 :follow-link "\C-m"
-                 (propertize "Open org-agenda" 'face 'font-lock-function-name-face))
+                 :follow-link "\C-m")
   (insert " ")
-  (widget-create 'push-button
+  (widget-create 'url-link
+                 :tag (propertize "Recently opened files" 'face 'font-lock-function-name-face)
                  :help-echo "Recently opened files."
                  :action (lambda (&rest ignore)
                            (call-interactively #'recentf-open-files))
                  :mouse-face 'highlight
-                 :follow-link "\C-m"
-                 (propertize "Recently opened files" 'face 'font-lock-function-name-face))
+                 :follow-link "\C-m")
   (spacemacs-buffer//center-line)
   (insert "\n")
-  (widget-create 'push-button
+  (widget-create 'url-link
                  :tag (propertize "Open project"
                                   'face 'font-lock-function-name-face)
-                 :help-echo "Open project"
+                 :help-echo "Open project."
                  :action (lambda (&rest ignore)
                            (call-interactively #'projectile-switch-project))
                  :mouse-face 'highlight
