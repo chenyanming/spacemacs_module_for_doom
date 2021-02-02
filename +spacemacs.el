@@ -169,6 +169,8 @@ Useful for making the home buffer the only visible buffer in the frame."
 ;; initialise layers
 
 ;; org layer
+(load! (concat spacemacs-path "spacemacs/layer/org/config.el"))
+(load! (concat spacemacs-path "spacemacs/layer/org/funcs.el"))
 (load! (concat spacemacs-path "spacemacs/layer/org/packages.el"))
 (org/init-org)
 ;; (org/post-init-org)
@@ -187,6 +189,8 @@ Useful for making the home buffer the only visible buffer in the frame."
 (org/init-org-journal)
 ;; (org/init-org-trello)
 ;; (org/init-org-sticky-header)
+(setq org-want-todo-bindings t)
+(org/init-evil-org)
 
 
 ;; pdf layer
