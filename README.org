@@ -30,6 +30,8 @@ In order to use the windows transient state properly, please add ~+numbers~ for
         +numbers)
 #+END_SRC
 
+To enable the spacemacs like dashboard, comment out ~doom-dashboard~.
+
 ** Add missing packages in ~packages.el~
 And install the missing packages in ~packages.el~
 
@@ -56,12 +58,17 @@ them in ~+spacemacs.el~ if necessary.
 
 To enable the spacemacs like dashboard, add this:
 ~(add-hook 'doom-init-ui-hook #'spacemacs/home)~
-And comment out ~doom-dashboard~ in ~init.el~.
 
 Spacemacs dashboard may consume 0.2 second to boot after testing.
 
 Configure ~dotspacemacs-startup-banner~, ~dotspacemacs-startup-lists~ to control the dashboard
 details.
+
+To disable doom org keybindings, add this:
+
+#+begin_src elisp
+(remove-hook 'org-load-hook #'+org-init-keybinds-h)
+#+end_src
 
 ** Run ~./emacs.d/bin/doom sync~
 Then sync the doom.
