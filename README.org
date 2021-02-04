@@ -126,3 +126,4 @@ Enjoy~
    - Fold Transient State: ~SPC-z-.~
    - Evil number Transient State: ~SPC-n-+~
 8. JavaScript layer major mode keybindings.
+9. Spacemacs Like Dashboard.
