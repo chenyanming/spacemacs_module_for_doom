@@ -13,9 +13,19 @@ I personally use it every day, and it works really great with doom.
 Estimate that it costs around 0.2 ~ 0.3 second (but it depends what type of CPU you use).
 
 ** Clone the module
-~git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs~
+#+begin_src sh
+git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs
+#+end_src
 
-** Enable necessary modules in ~init.el~
+Then following the following sections one by one, there are 5 steps:
+1. Setup ~init.el~
+2. Setup ~package.el~
+3. Adjust ~+spacemacs.el~
+4. Setup ~config.el~
+5. Quit Emacs and Run ~./emacs.d/bin/doom sync~
+
+** Setup ~init.el~
+Enable necessary modules in ~init.el~.
 Make sure enable the necessary modules in ~init.el~.
 
 At lease evil, org, gist, pdf, lookup, workspaces, eshell, and javascript etc.
@@ -29,7 +39,7 @@ In order to use the windows transient state properly, please add ~+numbers~ for
 
 To enable the spacemacs like dashboard, comment out ~doom-dashboard~.
 
-** Add missing packages in ~packages.el~
+** Setup ~packages.el~
 And install the missing packages in ~packages.el~
 
 #+BEGIN_SRC emacs-lisp
@@ -46,26 +56,23 @@ And install the missing packages in ~packages.el~
 (package! evil-terminal-cursor-changer) ;; for spacemacs evil
 (package! eshell-prompt-extras) ;; for shell layer
 #+END_SRC
-** IMPORTANT: Adjust ~+spacemacs~ based on your need
+** IMPORTANT: Adjust ~+spacemacs.el~ based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
 them in ~+spacemacs.el~ if necessary.
 
-** Load the module in ~config.el~
-~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~ ; important, since I use ~load-file-name~ to determine the module location.
-
-To enable the spacemacs like dashboard, add this:
-~(add-hook 'doom-init-ui-hook #'spacemacs/home)~
-
-Spacemacs dashboard may consume 0.2 second to boot after testing.
-
-Configure ~dotspacemacs-startup-banner~, ~dotspacemacs-startup-lists~ to control the dashboard
-details.
-
-To disable doom org keybindings, add this:
-
-#+begin_src elisp
-(remove-hook 'org-load-hook #'+org-init-keybinds-h)
-#+end_src
+** Setup ~config.el~
+- Load the ~+spacemcs.el~:
+    ~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~ ; important, since I use ~load-file-name~ to determine the module location.
+- To enable the spacemacs like dashboard, add this:
+  #+begin_src emacs-lisp
+  (add-hook 'doom-init-ui-hook #'spacemacs/home)
+  #+end_src
+- Spacemacs dashboard may consume 0.2 second to boot after testing.
+- Configure ~dotspacemacs-startup-banner~, ~dotspacemacs-startup-lists~ to control the dashboard details.
+- To disable doom org keybindings, add this:
+    #+begin_src elisp
+    (remove-hook 'org-load-hook #'+org-init-keybinds-h)
+    #+end_src
 
 ** Run ~./emacs.d/bin/doom sync~
 Then sync the doom.
