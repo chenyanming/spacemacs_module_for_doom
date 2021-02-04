@@ -74,7 +74,7 @@ them in ~+spacemacs.el~ if necessary.
     (remove-hook 'org-load-hook #'+org-init-keybinds-h)
     #+end_src
 
-** Run ~./emacs.d/bin/doom sync~
+** Quit Emacs and Run ~./emacs.d/bin/doom sync~
 Then sync the doom.
 
 *Please notice*:
