@@ -1,9 +1,8 @@
 ;;; +spacemacs.el -*- lexical-binding: t; -*-
 
-;;; Define spacemacs-path
-
-(if (not (bound-and-true-p spacemacs-path))
-    (defvar spacemacs-path "~/.doom.d/modules/"))
+;;; Define spacemacs-module-path
+;; use `load-file-name' to determine the parent directory
+(defvar spacemacs-module-path (file-name-directory load-file-name))
 
 ;;; Redefine Missing spacemacs variables & functions
 
@@ -21,12 +20,12 @@ defer call using `spacemacs-post-user-config-hook'."
 
 ;;; Load & setup core-load-paths
 
-(load! (concat spacemacs-path "spacemacs/core/core-load-paths.el"))
+(load! (concat spacemacs-module-path "core/core-load-paths.el"))
 (setq spacemacs-cache-directory doom-cache-dir) ; setup load path
 
 ;;; Load & setup core-dotspacemacs
 
-(load! (concat spacemacs-path "spacemacs/core/core-dotspacemacs.el"))
+(load! (concat spacemacs-module-path "core/core-dotspacemacs.el"))
 (defun dotspacemacs/init ()
   "Supported dotspacemacs settings."
   (setq-default
@@ -52,17 +51,17 @@ defer call using `spacemacs-post-user-config-hook'."
 
 ;;; Load & Setup core-spacemacs-buffer.el
 
-(load! (concat spacemacs-path "spacemacs/core/libs/page-break-lines.el"))
+(load! (concat spacemacs-module-path "core/libs/page-break-lines.el"))
 (require 'page-break-lines)
-(load! (concat spacemacs-path "spacemacs/core/core-spacemacs-buffer.el"))
+(load! (concat spacemacs-module-path "core/core-spacemacs-buffer.el"))
 (setq spacemacs-buffer-name "*Home*") ; setup the dashboard name
 
 ;;; Load & Setup other core libraries
 
-(load! (concat spacemacs-path "spacemacs/core/core-funcs.el"))
-(load! (concat spacemacs-path "spacemacs/core/core-keybindings.el"))
-(load! (concat spacemacs-path "spacemacs/core/core-transient-state.el"))
-(load! (concat spacemacs-path "spacemacs/core/core-toggle.el"))
+(load! (concat spacemacs-module-path "core/core-funcs.el"))
+(load! (concat spacemacs-module-path "core/core-keybindings.el"))
+(load! (concat spacemacs-module-path "core/core-transient-state.el"))
+(load! (concat spacemacs-module-path "core/core-toggle.el"))
 (setq spacemacs-post-user-config-hook-run t)
 
 ;;; Other Configurations
@@ -106,9 +105,9 @@ defer call using `spacemacs-post-user-config-hook'."
 ;; initialise layers
 
 ;; org layer
-(load! (concat spacemacs-path "spacemacs/layer/org/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/org/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/org/packages.el"))
+(load! (concat spacemacs-module-path "layer/org/config.el"))
+(load! (concat spacemacs-module-path "layer/org/funcs.el"))
+(load! (concat spacemacs-module-path "layer/org/packages.el"))
 (org/init-org)
 ;; (org/post-init-org)
 (org/init-org-agenda)
@@ -131,25 +130,25 @@ defer call using `spacemacs-post-user-config-hook'."
 
 
 ;; pdf layer
-(load! (concat spacemacs-path "spacemacs/layer/pdf/packages.el"))
+(load! (concat spacemacs-module-path "layer/pdf/packages.el"))
 (pdf/init-pdf-tools)
 
 ;; epub layer
-(load! (concat spacemacs-path "spacemacs/layer/epub/packages.el"))
+(load! (concat spacemacs-module-path "layer/epub/packages.el"))
 (epub/init-nov)
 
 ;; dash layer
-(load! (concat spacemacs-path "spacemacs/layer/dash/packages.el"))
-;; (load! (concat spacemacs-path "spacemacs/layer/dash/config.el"))
-;; (load! (concat spacemacs-path "spacemacs/layer/dash/funcs.el"))
+(load! (concat spacemacs-module-path "layer/dash/packages.el"))
+;; (load! (concat spacemacs-module-path "layer/dash/config.el"))
+;; (load! (concat spacemacs-module-path "layer/dash/funcs.el"))
 (dash/init-dash-at-point)
 ;;(dash/init-counsel-dash)
 
 
 
 ;; spacemacs defaults layer
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-defaults/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-defaults/keybindings.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-defaults/funcs.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-defaults/keybindings.el"))
 ; (spacemacs-defaults/init-abbrev)
 ; (spacemacs-defaults/init-archive-mode)
 ; (spacemacs-defaults/init-bookmark)
@@ -192,10 +191,10 @@ defer call using `spacemacs-post-user-config-hook'."
 
 
 ;; version control layer
-;; (load! (concat spacemacs-path "spacemacs/layer/version-control/packages.el"))
-(load! (concat spacemacs-path "spacemacs/layer/version-control/keybindings.el"))
-(load! (concat spacemacs-path "spacemacs/layer/version-control/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/version-control/config.el"))
+;; (load! (concat spacemacs-module-path "layer/version-control/packages.el"))
+(load! (concat spacemacs-module-path "layer/version-control/keybindings.el"))
+(load! (concat spacemacs-module-path "layer/version-control/funcs.el"))
+(load! (concat spacemacs-module-path "layer/version-control/config.el"))
 ;; (version-control/init-vc)
 ;; (version-control/init-diff-mode)
 ;; (version-control/init-diff-hl)
@@ -209,8 +208,8 @@ defer call using `spacemacs-post-user-config-hook'."
 
 
 ;; github layer
-(load! (concat spacemacs-path "spacemacs/layer/github/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/github/packages.el"))
+(load! (concat spacemacs-module-path "layer/github/funcs.el"))
+(load! (concat spacemacs-module-path "layer/github/packages.el"))
 (github/init-forge)
 (github/init-gist)
 (github/init-github-clone)
@@ -219,33 +218,33 @@ defer call using `spacemacs-post-user-config-hook'."
 
 
 ;; spacemacs navigation layer
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-navigation/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-navigation/packages.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-navigation/funcs.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-navigation/packages.el"))
 (spacemacs-navigation/init-auto-highlight-symbol)
 (spacemacs-navigation/init-symbol-overlay)
 
 
 ;; spacemacs layouts layer
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/packages.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-layouts/config.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-layouts/packages.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-layouts/funcs.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-layouts/config.el"))
 (spacemacs-layouts/init-eyebrowse)
 (spacemacs-layouts/init-persp-mode)
 
 
 ;; bm layer
-(load! (concat spacemacs-path "spacemacs/layer/bm/packages.el"))
+(load! (concat spacemacs-module-path "layer/bm/packages.el"))
 (bm/init-bm)
 
 
 ;; git layer
-(load! (concat spacemacs-path "spacemacs/layer/git/packages.el"))
+(load! (concat spacemacs-module-path "layer/git/packages.el"))
 (git/init-git-timemachine)
 
 ;; javascript layer
-(load! (concat spacemacs-path "spacemacs/layer/javascript/packages.el"))
-(load! (concat spacemacs-path "spacemacs/layer/javascript/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/javascript/funcs.el"))
+(load! (concat spacemacs-module-path "layer/javascript/packages.el"))
+(load! (concat spacemacs-module-path "layer/javascript/config.el"))
+(load! (concat spacemacs-module-path "layer/javascript/funcs.el"))
 (javascript/init-js2-mode)
 ;; you can only choose either nodejs or skewer
 (setq javascript-repl 'nodejs)          ; choose nodejs
@@ -255,7 +254,7 @@ defer call using `spacemacs-post-user-config-hook'."
 
 
 ;; spacemacs editing layer
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-editing/packages.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-editing/packages.el"))
 (spacemacs-editing/init-avy)
 (spacemacs-editing/init-expand-region)
 (spacemacs-editing/init-link-hint)
@@ -263,9 +262,9 @@ defer call using `spacemacs-post-user-config-hook'."
 (spacemacs-editing/init-string-inflection)
 
 ;; spacemacs evil layer
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/spacemacs-evil/packages.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-evil/config.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-evil/funcs.el"))
+(load! (concat spacemacs-module-path "layer/spacemacs-evil/packages.el"))
 ;; (spacemacs-evil/init-evil-anzu)
 ;; (spacemacs-evil/init-evil-args)
 ;; (spacemacs-evil/init-evil-cleverparens)
@@ -292,17 +291,17 @@ defer call using `spacemacs-post-user-config-hook'."
 ;; (spacemacs-evil/init-vi-tilde-fringe)
 
 ;; shell layer
-(load! (concat spacemacs-path "spacemacs/layer/shell/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/shell/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/shell/packages.el"))
+(load! (concat spacemacs-module-path "layer/shell/config.el"))
+(load! (concat spacemacs-module-path "layer/shell/funcs.el"))
+(load! (concat spacemacs-module-path "layer/shell/packages.el"))
 (shell/init-eshell)
 (shell/init-vterm)
 
 
 ;; json layer
-(load! (concat spacemacs-path "spacemacs/layer/json/config.el"))
-(load! (concat spacemacs-path "spacemacs/layer/json/funcs.el"))
-(load! (concat spacemacs-path "spacemacs/layer/json/packages.el"))
+(load! (concat spacemacs-module-path "layer/json/config.el"))
+(load! (concat spacemacs-module-path "layer/json/funcs.el"))
+(load! (concat spacemacs-module-path "layer/json/packages.el"))
 (json/init-json-navigator)
 (json/init-json-reformat)
 (json/init-json-snatcher)

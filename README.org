@@ -15,9 +15,6 @@ Estimate that it costs around 0.2 ~ 0.3 second (but it depends what type of CPU 
 ** Clone the module
 ~git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs~
 
-If you want to clone to other directory, check the issue
-https://github.com/chenyanming/spacemacs_module_for_doom/pull/2
-
 ** Enable necessary modules in ~init.el~
 Make sure enable the necessary modules in ~init.el~.
 
@@ -54,7 +51,7 @@ Since this package only simply load the necessary layer files and call their ini
 them in ~+spacemacs.el~ if necessary.
 
 ** Load the module in ~config.el~
-~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~
+~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~ ; important, since I use ~load-file-name~ to determine the module location.
 
 To enable the spacemacs like dashboard, add this:
 ~(add-hook 'doom-init-ui-hook #'spacemacs/home)~

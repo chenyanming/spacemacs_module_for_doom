@@ -17,7 +17,7 @@
 
 ;; paths
 (defvar spacemacs-start-directory
-  (concat spacemacs-path "spacemacs/")
+  spacemacs-module-path
   "Spacemacs start directory.")
 (defconst spacemacs-core-directory
   (expand-file-name (concat spacemacs-start-directory "core/"))
