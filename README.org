@@ -17,7 +17,7 @@ Estimate that it costs around 0.2 ~ 0.3 second (but it depends what type of CPU 
 git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs
 #+end_src
 
-Then following the following sections one by one, there are 5 steps:
+Then follow the following sections one by one, there are 5 steps:
 1. Setup ~init.el~
 2. Setup ~package.el~
 3. Adjust ~+spacemacs.el~
