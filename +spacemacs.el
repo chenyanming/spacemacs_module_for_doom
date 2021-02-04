@@ -213,7 +213,8 @@ defer call using `spacemacs-post-user-config-hook'."
 ;; github layer
 (load! (concat spacemacs-module-path "layer/github/funcs.el"))
 (load! (concat spacemacs-module-path "layer/github/packages.el"))
-(github/init-forge)
+(when (featurep! :tools magit)
+  (github/init-forge))
 (github/init-gist)
 (github/init-github-clone)
 (github/init-github-search)
@@ -232,7 +233,8 @@ defer call using `spacemacs-post-user-config-hook'."
 (load! (concat spacemacs-module-path "layer/spacemacs-layouts/funcs.el"))
 (load! (concat spacemacs-module-path "layer/spacemacs-layouts/config.el"))
 (spacemacs-layouts/init-eyebrowse)
-(spacemacs-layouts/init-persp-mode)
+(when (featurep! :ui workspaces)
+  (spacemacs-layouts/init-persp-mode))
 
 
 ;; bm layer
@@ -241,8 +243,9 @@ defer call using `spacemacs-post-user-config-hook'."
 
 
 ;; git layer
-(load! (concat spacemacs-module-path "layer/git/packages.el"))
-(git/init-git-timemachine)
+(when (featurep! :emacs vc)
+  (load! (concat spacemacs-module-path "layer/git/packages.el"))
+  (git/init-git-timemachine))
 
 ;; javascript layer
 (when (featurep! :lang javascript)
@@ -260,9 +263,11 @@ defer call using `spacemacs-post-user-config-hook'."
 
 ;; spacemacs editing layer
 (load! (concat spacemacs-module-path "layer/spacemacs-editing/packages.el"))
-(spacemacs-editing/init-avy)
-(spacemacs-editing/init-expand-region)
-(spacemacs-editing/init-link-hint)
+(when (featurep! :config default)
+  (spacemacs-editing/init-avy)
+  (spacemacs-editing/init-expand-region)
+  (spacemacs-editing/init-link-hint))
+
 (spacemacs-editing/init-move-text)
 (spacemacs-editing/init-string-inflection)
 
@@ -327,14 +332,19 @@ defer call using `spacemacs-post-user-config-hook'."
     (load! (concat spacemacs-module-path "layer/spacemacs-project/packages.el"))
     (load! (concat spacemacs-module-path "layer/spacemacs-project/funcs.el"))
     (load! (concat spacemacs-module-path "layer/spacemacs-completion/funcs.el"))
+    (map! :leader
+          "sg" nil
+          "sk" nil
+          "sr" nil
+          "st" nil)
     (ivy/post-init-bookmark)
     (ivy/init-counsel)
     (ivy/pre-init-counsel-projectile)
     (ivy/post-init-evil)
-    (ivy/init-helm-make)
+    (if (featurep 'helm-make)
+        (ivy/init-helm-make))
     (ivy/post-init-imenu)
     (ivy/init-ivy)
-    ;; (ivy/init-ivy-spacemacs-help)
     (ivy/post-init-projectile)
     (ivy/init-swiper)
     (ivy/init-wgrep)

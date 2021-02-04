@@ -39,6 +39,8 @@ In order to use the windows transient state properly, please add ~+numbers~ for
 
 To enable the spacemacs like dashboard, comment out ~doom-dashboard~.
 
+To disable default doom keybindings, delete ~+bindings~, in ~:config default~ module.
+
 ** Setup ~packages.el~
 And install the missing packages in ~packages.el~
 
