@@ -1,110 +1,17 @@
 ;;; +spacemacs.el -*- lexical-binding: t; -*-
 
-;;; Setup & load spacmeacs core packages
+;;; Define spacemacs-path
 
 (if (not (bound-and-true-p spacemacs-path))
     (defvar spacemacs-path "~/.doom.d/modules/"))
 
-(setq dotspacemacs-editing-style 'vim)
-(setq dotspacemacs-emacs-command-key "SPC")
-(setq dotspacemacs-emacs-leader-key "M-m")
-(setq dotspacemacs-ex-command-key ":")
-(setq dotspacemacs-leader-key "SPC")
-(setq dotspacemacs-major-mode-leader-key ",")
-(setq dotspacemacs-major-mode-emacs-leader-key "C-M-m")
-(setq spacemacs-cache-directory doom-cache-dir)
-(setq which-key-idle-delay 0.4)
-(setq which-key-idle-secondary-delay 0.1)
-
-;;; Setup spacmeacs buffer
-
-(load! (concat spacemacs-path "spacemacs/core/core-load-paths.el"))
-(defcustom dotspacemacs-startup-lists '((recents  . 5)
-                                     ;; (bookmarks . 8)
-                                     ;; (projects . 7)
-                                     ;; (agenda . 7)
-                                     ;; (todos . 7)
-                                     )
-  "Association list of items to show in the startup buffer of the form
-`(list-type . list-size)`. If nil it is disabled.
-
-;; Possible values for list-type are:
-;; `recents' `bookmarks' `projects' `agenda' `todos'.
-;; List sizes may be nil, in which case
-;; `spacemacs--buffer-startup-lists-length' takes effect.")
-
-(defvar dotspacemacs-filepath ""
-  "Filepath to the installed dotfile. If SPACEMACSDIR is given
-then SPACEMACSDIR/init.el is used. Otherwise, if ~/.spacemacs
-exists, then this is used. If ~/.spacemacs does not exist, then
-check for init.el in dotspacemacs-directory and use this if it
-exists. Otherwise, fallback to ~/.spacemacs")
-
-(defvar dotspacemacs-startup-buffer-responsive t
-  "True if the home buffer should respond to resize events.")
+;;; Redefine Missing spacemacs variables & functions
 
 (defvar spacemacs-version doom-version)
-
-(defvar dotspacemacs-distribution 'doom
-  "Base distribution to use. This is a layer contained in the directory
-`+distributions'. For now available distributions are `spacemacs-base'
-or `spacemacs'.")
-
-(defcustom dotspacemacs-startup-banner 'cat
-  "Specify the startup banner. Default value is `official', it displays
-the official spacemacs logo. An integer value is the index of text
-banner, `random' chooses a random text banner in `core/banners'
-directory. A string value must be a path to a .PNG file.
-If the value is nil then no banner is displayed.")
-
-(defvar spacemacs-initialized t
-  "Whether or not spacemacs has finished initializing by completing
-the final step of executing code in `emacs-startup-hook'.")
-
-(load! (concat spacemacs-path "spacemacs/core/libs/page-break-lines.el"))
-(require 'page-break-lines)
-(load! (concat spacemacs-path "spacemacs/core/core-spacemacs-buffer.el"))
-
-;; setup the dashboard name
-(setq spacemacs-buffer-name "*Home*")
-
-(defun dotspacemacs/location ()
-  "Dot file location - SPC-f-e-d"
-  ;; (doom/find-file-in-private-config)
-  (expand-file-name "config.el" doom-private-dir))
-
-;; (setq dotspacemacs-persistent-server t)
-(load! (concat spacemacs-path "spacemacs/core/core-funcs.el"))
-; (load! (concat spacemacs-path "spacemacs/core/core-spacemacs-buffer.el")
-;; (load! (concat spacemacs-path "spacemacs/core/core-fonts-support.el")
-;; (load! (concat spacemacs-path "spacemacs/core/core-dumper.el")
-(load! (concat spacemacs-path "spacemacs/core/core-keybindings.el"))
-(load! (concat spacemacs-path "spacemacs/core/core-transient-state.el"))
-(load! (concat spacemacs-path "spacemacs/core/core-toggle.el"))
-;; (load! (concat spacemacs-path "spacemacs/core/core-hooks.el")
-;; (load! (concat spacemacs-path "spacemacs/core/core-fonts-support.el")
-;; TODO: evilified-state-evilify-map seems to have conflict with the doom
-;; setting, like the leader key setting.
-;; (use-package! evil-evilified-state
-;;   :load-path
-;;   (concat spacemacs-path "evil-evilified-state")
-
-;; (require 'bind-map)
-;; (require 'core-funcs)
-;; (require 'core-keybindings)
-
-(defvar dotspacemacs-distinguish-gui-tab nil
-  "If non nil, distinguish C-i and tab in the GUI version of Emacs.")
-
 (defvar spacemacs-post-user-config-hook nil
   "Hook run after dotspacemacs/user-config")
 (defvar spacemacs-post-user-config-hook-run nil
   "Whether `spacemacs-post-user-config-hook' has been run")
-(defvar dotspacemacs-show-transient-state-title t
-  "If non nil show the titles of transient states.")
-(defvar dotspacemacs-show-transient-state-color-guide t
-  "If non nil show the color guide hint for transient state keys.")
-(setq spacemacs-post-user-config-hook-run t)
 (defun spacemacs/defer-until-after-user-config (func)
   "Call FUNC if dotspacemacs/user-config has been called. Otherwise,
 defer call using `spacemacs-post-user-config-hook'."
@@ -112,20 +19,57 @@ defer call using `spacemacs-post-user-config-hook'."
       (funcall func)
     (add-hook 'spacemacs-post-user-config-hook func)))
 
+;;; Load & setup core-load-paths
+
+(load! (concat spacemacs-path "spacemacs/core/core-load-paths.el"))
+(setq spacemacs-cache-directory doom-cache-dir) ; setup load path
+
+;;; Load & setup core-dotspacemacs
+
+(load! (concat spacemacs-path "spacemacs/core/core-dotspacemacs.el"))
+(defun dotspacemacs/init ()
+  "Supported dotspacemacs settings."
+  (setq-default
+   dotspacemacs-editing-style 'vim
+   dotspacemacs-emacs-command-key "SPC"
+   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-ex-command-key ":"
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   dotspacemacs-distribution 'doom
+   dotspacemacs-startup-banner 'cat
+   dotspacemacs-folding-method 'evil
+   dotspacemacs-filepath (expand-file-name "config.el" doom-private-dir)
+   dotspacemacs-startup-lists '((recents  . 5)
+                                ;; (bookmarks . 8)
+                                ;; (projects . 7)
+                                ;; (agenda . 7)
+                                ;; (todos . 7)
+                                )))
+(dotspacemacs/init)
+(setq spacemacs-initialized t)
+
+;;; Load & Setup core-spacemacs-buffer.el
+
+(load! (concat spacemacs-path "spacemacs/core/libs/page-break-lines.el"))
+(require 'page-break-lines)
+(load! (concat spacemacs-path "spacemacs/core/core-spacemacs-buffer.el"))
+(setq spacemacs-buffer-name "*Home*") ; setup the dashboard name
+
+;;; Load & Setup other core libraries
+
+(load! (concat spacemacs-path "spacemacs/core/core-funcs.el"))
+(load! (concat spacemacs-path "spacemacs/core/core-keybindings.el"))
+(load! (concat spacemacs-path "spacemacs/core/core-transient-state.el"))
+(load! (concat spacemacs-path "spacemacs/core/core-toggle.el"))
+(setq spacemacs-post-user-config-hook-run t)
+
+;;; Other Configurations
+
+(setq which-key-idle-delay 0.4)
+(setq which-key-idle-secondary-delay 0.1)
 (setq version-control-diff-tool 'git-gutter)
-
-
-(defvar dotspacemacs-default-layout-name "Default"
-  "Name of the default layout.")
-(defvar dotspacemacs-auto-generate-layout-names nil
-  "If non-nil, auto-generate layout name when creating new layouts.
-Only has effect when using the \"jump to layout by number\" commands.")
-(defun spacemacs/home-delete-other-windows ()
-  "Open home Spacemacs buffer and delete other windows.
-Useful for making the home buffer the only visible buffer in the frame."
-  (interactive)
-  (+doom-dashboard/open (selected-frame))
-  (delete-other-windows))
 
 ;;; map
 
@@ -145,14 +89,7 @@ Useful for making the home buffer the only visible buffer in the frame."
 
 (defmacro spacemacs/set-leader-keys (&rest rest)
   "redefine the spacemcas/set-leader-keys macro"
-  ;; (setq doom--map-fn 'doom--define-leader-key)
-  ;; (doom--map-keyword-to-states :n)
-  ;; (setq doom--map-state '(:n t))
-  ;; (message rest)
-  (doom--map-process (cons :leader (cons :n rest) ))
-  ;; (doom--map-process (cons '(:n) 'rest))
-  ;; (doom--map-process (apply 'concat :n  rest))
-  )
+  (doom--map-process (cons :leader (cons :n rest) )))
 
 ;; define some simple but important keys with map! which is easier than using
 ;; spacemacs ways to define.
@@ -353,7 +290,6 @@ Useful for making the home buffer the only visible buffer in the frame."
 ;; (spacemacs-evil/init-hs-minor-mode)
 ;; (spacemacs-evil/init-linum-relative)
 ;; (spacemacs-evil/init-vi-tilde-fringe)
-(setq dotspacemacs-folding-method 'evil)
 
 ;; shell layer
 (load! (concat spacemacs-path "spacemacs/layer/shell/config.el"))
