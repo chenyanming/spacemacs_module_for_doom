@@ -14,8 +14,9 @@ Estimate that it costs around 0.2 ~ 0.3 second (but it depends what type of CPU 
 
 ** How to setup?
 There are two ways to setup this module, you can choose either one.
-1. Setup as Doom Private Module (new method)
-2. Load this module directly (old method)
+1. Setup as Doom Private Module (new method, more "doom-way")
+    If you find missing packages, welcome PR or request an Issue.
+2. Load this module directly (old method, will not support in the future)
 
 ** Setup as Doom Private Module
 This is the new method to enable as a private Doom module. It is the easiest way to setup.
@@ -27,8 +28,8 @@ This is the new method to enable as a private Doom module. It is the easiest way
     #+begin_src sh
     git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.emacs.d/modules/private/spacemacs
     #+end_src
-2. Setup ~~/.doom.d/init.el~
-   - Add ~:private spaceamcs~ into ~init.el~
+2. Setup ~/.doom.d/init.el
+   - Add ~:private spacemacs~ into ~init.el~
    - In order to use the windows transient state properly, please add ~+numbers~ for
      ~windows-select~ module.
    #+BEGIN_SRC emacs-lisp
@@ -37,7 +38,7 @@ This is the new method to enable as a private Doom module. It is the easiest way
    #+END_SRC
    - To enable the spacemacs like dashboard, comment out ~doom-dashboard~.
    - To disable default doom keybindings, delete ~+bindings~, in ~:config default~ module.
-3. Setup ~~/.doom.d/config.el~
+3. Setup ~/.doom.d/config.el
    - To enable the spacemacs like dashboard, add this:
      #+begin_src emacs-lisp
      (add-hook 'doom-init-ui-hook #'spacemacs/home)
@@ -49,7 +50,11 @@ This is the new method to enable as a private Doom module. It is the easiest way
     (remove-hook 'org-load-hook #'+org-init-keybinds-h)
     #+end_src
 4. Sync
-    Quit Emacs and Run ~~./emacs.d/bin/doom sync~
+    Quit Emacs and Run
+    #+begin_src sh
+    ~./emacs.d/bin/doom sync
+    #+end_src
+
 5. Start
     Restart Emacs.
 
@@ -67,7 +72,7 @@ Then follow the following sections one by one, there are 5 steps:
 4. Setup ~config.el~
 5. Quit Emacs and Run ~./emacs.d/bin/doom sync~
 
-*** Setup ~~/.doom.d/init.el~
+*** Setup ~/.doom.d/init.el
 Enable necessary modules in ~init.el~.
 Make sure enable the necessary modules in ~init.el~.
 
@@ -84,7 +89,7 @@ To enable the spacemacs like dashboard, comment out ~doom-dashboard~.
 
 To disable default doom keybindings, delete ~+bindings~, in ~:config default~ module.
 
-*** Setup ~~/.doom.d/packages.el~
+*** Setup ~/.doom.d/packages.el
 And install the missing packages in ~packages.el~
 
 #+BEGIN_SRC emacs-lisp
@@ -105,7 +110,7 @@ And install the missing packages in ~packages.el~
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
 them in this module's ~config.el~ if necessary.
 
-*** Setup ~~/.doom.d/config.el~
+*** Setup ~/.doom.d/config.el
 - Load the this module's ~config.el~:
     ~(load! "~/.doom.d/modules/spacemacs/config")~ ; important, since I use ~load-file-name~ to determine the module location.
 - To enable the spacemacs like dashboard, add this:
@@ -119,7 +124,7 @@ them in this module's ~config.el~ if necessary.
     (remove-hook 'org-load-hook #'+org-init-keybinds-h)
     #+end_src
 
-*** Quit Emacs and Run ~./emacs.d/bin/doom sync~
+*** Quit Emacs and Run ~/emacs.d/bin/doom sync
 Then sync the doom.
 
 *Please notice*:
