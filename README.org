@@ -16,7 +16,7 @@ Estimate that it costs around 0.2 ~ 0.3 second (but it depends what type of CPU 
 There are two ways to setup this module, you can choose either one.
 1. Setup as Doom Private Module (new method, more "doom-way")
     If you find missing packages, welcome PR or request an Issue.
-2. Load this module directly (old method, will not support in the future)
+2. Load this module directly (old method, you can clone and hack anything if you like)
 
 ** Setup as Doom Private Module
 This is the new method to enable as a private Doom module. It is the easiest way to setup.
@@ -49,14 +49,12 @@ This is the new method to enable as a private Doom module. It is the easiest way
     #+begin_src elisp
     (remove-hook 'org-load-hook #'+org-init-keybinds-h)
     #+end_src
-4. Sync
-    Quit Emacs and Run
+4. Quit Emacs and Run
     #+begin_src sh
     ~./emacs.d/bin/doom sync
     #+end_src
 
-5. Start
-    Restart Emacs.
+5. Restart Emacs.
 
 ** Load this module directly
 This is the old method to enable as a Doom module, it is more complicated but more easy to hack.
