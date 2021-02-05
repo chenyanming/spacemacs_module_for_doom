@@ -12,7 +12,50 @@ I personally use it every day, and it works really great with doom.
 *** Startup Time
 Estimate that it costs around 0.2 ~ 0.3 second (but it depends what type of CPU you use).
 
-** Clone the module
+** How to setup?
+There are two ways to setup this module, you can choose either one.
+1. Setup as Doom Private Module (new method)
+2. Load this module directly (old method)
+
+** Setup as Doom Private Module
+This is the new method to enable as a private Doom module. It is the easiest way to setup.
+1. Clone
+    #+begin_src sh
+    git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/private/spacemacs
+    #+end_src
+    or
+    #+begin_src sh
+    git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.emacs.d/modules/private/spacemacs
+    #+end_src
+2. Setup ~~/.doom.d/init.el~
+   - Add ~:private spaceamcs~ into ~init.el~
+   - In order to use the windows transient state properly, please add ~+numbers~ for
+     ~windows-select~ module.
+   #+BEGIN_SRC emacs-lisp
+   (window-select     ; visually switch windows
+           +numbers)
+   #+END_SRC
+   - To enable the spacemacs like dashboard, comment out ~doom-dashboard~.
+   - To disable default doom keybindings, delete ~+bindings~, in ~:config default~ module.
+3. Setup ~~/.doom.d/config.el~
+   - To enable the spacemacs like dashboard, add this:
+     #+begin_src emacs-lisp
+     (add-hook 'doom-init-ui-hook #'spacemacs/home)
+     #+end_src
+   - Spacemacs dashboard may consume 0.2 second to boot after testing.
+   - Configure ~dotspacemacs-startup-banner~, ~dotspacemacs-startup-lists~ to control the dashboard details.
+   - To disable doom org keybindings, add this:
+    #+begin_src elisp
+    (remove-hook 'org-load-hook #'+org-init-keybinds-h)
+    #+end_src
+4. Sync
+    Quit Emacs and Run ~~./emacs.d/bin/doom sync~
+5. Start
+    Restart Emacs.
+
+** Load this module directly
+This is the old method to enable as a Doom module, it is more complicated but more easy to hack.
+*** Clone the module
 #+begin_src sh
 git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/modules/spacemacs
 #+end_src
@@ -20,11 +63,11 @@ git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.doom.d/mod
 Then follow the following sections one by one, there are 5 steps:
 1. Setup ~init.el~
 2. Setup ~package.el~
-3. Adjust ~+spacemacs.el~
+3. Adjust ~config.el~ (This module's ~config.el~)
 4. Setup ~config.el~
 5. Quit Emacs and Run ~./emacs.d/bin/doom sync~
 
-** Setup ~init.el~
+*** Setup ~~/.doom.d/init.el~
 Enable necessary modules in ~init.el~.
 Make sure enable the necessary modules in ~init.el~.
 
@@ -41,7 +84,7 @@ To enable the spacemacs like dashboard, comment out ~doom-dashboard~.
 
 To disable default doom keybindings, delete ~+bindings~, in ~:config default~ module.
 
-** Setup ~packages.el~
+*** Setup ~~/.doom.d/packages.el~
 And install the missing packages in ~packages.el~
 
 #+BEGIN_SRC emacs-lisp
@@ -58,13 +101,13 @@ And install the missing packages in ~packages.el~
 (package! evil-terminal-cursor-changer) ;; for spacemacs evil
 (package! eshell-prompt-extras) ;; for shell layer
 #+END_SRC
-** IMPORTANT: Adjust ~+spacemacs.el~ based on your need
+*** IMPORTANT: Adjust this module's ~config.el~ (~+spacemacs.el~ bofore) based on your need
 Since this package only simply load the necessary layer files and call their init functions, you can comment out
-them in ~+spacemacs.el~ if necessary.
+them in this module's ~config.el~ if necessary.
 
-** Setup ~config.el~
-- Load the ~+spacemcs.el~:
-    ~(load! "~/.doom.d/modules/spacemacs/+spacemacs")~ ; important, since I use ~load-file-name~ to determine the module location.
+*** Setup ~~/.doom.d/config.el~
+- Load the this module's ~config.el~:
+    ~(load! "~/.doom.d/modules/spacemacs/config")~ ; important, since I use ~load-file-name~ to determine the module location.
 - To enable the spacemacs like dashboard, add this:
   #+begin_src emacs-lisp
   (add-hook 'doom-init-ui-hook #'spacemacs/home)
@@ -76,17 +119,18 @@ them in ~+spacemacs.el~ if necessary.
     (remove-hook 'org-load-hook #'+org-init-keybinds-h)
     #+end_src
 
-** Quit Emacs and Run ~./emacs.d/bin/doom sync~
+*** Quit Emacs and Run ~./emacs.d/bin/doom sync~
 Then sync the doom.
 
 *Please notice*:
 If you want to keep sync with my commits, every time you do git pull, you should better run ~./emacs.d/bin/doom
 sync~ again, in case the ~packages.el~ is updated.
 
+
 ** Notes on transient states
 Spacemacs's transient states are based on ~hydra~, while it seems has some
 problems with doom. I am trying to fix it.
-You can choose ~message~, ~lv~, or ~posframe~ on ~+spacemacs.el~
+You can choose ~message~, ~lv~, or ~posframe~ in ~config.el~
 e.g. to choose ~posframe~:
 #+BEGIN_SRC emacs-lisp
 (setq hydra-hint-display-type 'posframe)
