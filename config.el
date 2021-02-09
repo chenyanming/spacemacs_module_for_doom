@@ -350,3 +350,16 @@ defer call using `spacemacs-post-user-config-hook'."
     (ivy/init-wgrep)
     (spacemacs-project/init-projectile)
     (spacemacs//ivy-hjkl-navigation dotspacemacs-editing-style)))
+
+;; doom-dashboard specific setting
+(when (featurep! :ui doom-dashboard)
+  (defun spacemacs/home-delete-other-windows ()
+    "Open home Spacemacs buffer and delete other windows.
+Useful for making the home buffer the only visible buffer in the frame."
+    (interactive)
+    (+doom-dashboard/open (selected-frame))
+    (delete-other-windows)))
+
+;; it is necessary to require cl even >=27.1
+;; otherwise some functions name will be missing
+(require 'cl)
