@@ -29,7 +29,7 @@ This is the new method to enable as a private Doom module. It is the easiest way
     git clone git@github.com:chenyanming/spacemacs_module_for_doom.git ~/.emacs.d/modules/private/spacemacs
     #+end_src
 2. Setup ~/.doom.d/init.el
-   - Add ~:private spacemacs~ into ~init.el~ after `:default`, so that all necessary modules will be loaded before `spacemacs` module
+   - Add ~:private spacemacs~ into ~init.el~ after ~:default~ - the end of ~doom!~ section, so that all necessary modules will be loaded before ~spacemacs~ module
    - In order to use the windows transient state properly, please add ~+numbers~ for
      ~windows-select~ module.
    #+BEGIN_SRC emacs-lisp
