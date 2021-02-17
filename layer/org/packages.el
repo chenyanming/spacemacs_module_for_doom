@@ -318,7 +318,7 @@ Will work on both org-mode and any mode that accepts plain html."
         "-" 'org-ctrl-c-minus
         "#" 'org-update-statistics-cookies
         "RET"   'org-ctrl-c-ret
-        "M-RET" 'org-meta-return
+        ;; "M-RET" 'org-meta-return
         ;; attachments
         "A" 'org-attach
         ;; insertion
@@ -764,7 +764,7 @@ Headline^^            Visit entry^^               Filter^^                    Da
         "aojj" 'org-journal-new-entry
         "aojs" 'org-journal-search-forever)
 
-      (setq spacemacs-org-journal-mode-map (copy-keymap spacemacs-org-mode-map))
+      ;; (setq org-journal-mode-map (copy-keymap org-mode-map))
 
       (spacemacs/set-leader-keys-for-major-mode 'calendar-mode
         "r" 'org-journal-read-entry
@@ -781,7 +781,8 @@ Headline^^            Visit entry^^               Filter^^                    Da
         "n" 'org-journal-open-next-entry
         "p" 'org-journal-open-previous-entry)
 
-      (spacemacs//init-leader-mode-map 'org-journal-mode 'spacemacs-org-journal-mode-map))))
+      ;; (spacemacs//init-leader-mode-map 'org-journal-mode 'org-journal-mode-map)
+      )))
 
 (defun org/init-ox-hugo ()
   (use-package ox-hugo :after ox))

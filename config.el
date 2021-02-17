@@ -49,6 +49,12 @@ defer call using `spacemacs-post-user-config-hook'."
 (dotspacemacs/init)
 (setq spacemacs-initialized t)
 
+;; Overwrite doom related key prefixes
+(setq doom-leader-key dotspacemacs-leader-key)
+(setq doom-leader-alt-key dotspacemacs-emacs-leader-key)
+(setq doom-localleader-key dotspacemacs-major-mode-leader-key)
+(setq doom-localleader-alt-key dotspacemacs-major-mode-emacs-leader-key)
+
 ;;; Load & Setup core-spacemacs-buffer.el
 
 (load! (concat spacemacs-module-path "core/libs/page-break-lines.el"))
@@ -87,8 +93,18 @@ defer call using `spacemacs-post-user-config-hook'."
       "x" nil)
 
 (defmacro spacemacs/set-leader-keys (&rest rest)
-  "redefine the spacemcas/set-leader-keys macro"
+  "Redefine the spacemcas/set-leader-keys macro"
   (doom--map-process (cons :leader (cons :n rest) )))
+
+(defmacro spacemacs/set-leader-keys-for-major-mode (mode &rest rest)
+ "Redefine the `spacemacs/set-leader-keys-for-major-mode' macro.
+Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
+  `(define-localleader-key! :keymaps '(,(intern (replace-regexp-in-string "'" "" (format "%s-map" mode)))) ,@rest))
+
+(defmacro spacemacs/set-leader-keys-for-minor-mode (mode &rest rest)
+  "Redefine the `spacemacs/set-leader-keys-for-major-mode' macro.
+Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
+  `(define-localleader-key! :keymaps '(,(intern (replace-regexp-in-string "'" "" (format "%s-map" mode)))) ,@rest))
 
 ;; define some simple but important keys with map! which is easier than using
 ;; spacemacs ways to define.
