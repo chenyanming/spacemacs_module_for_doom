@@ -92,6 +92,9 @@ defer call using `spacemacs-post-user-config-hook'."
       "wc" nil
       "x" nil)
 
+;; unbind the keys when necessary
+(general-auto-unbind-keys)
+
 (defmacro spacemacs/set-leader-keys (&rest rest)
   "Redefine the spacemcas/set-leader-keys macro"
   (doom--map-process (cons :leader (cons :n rest) )))
