@@ -57,7 +57,7 @@
 
 (defun spacemacs-navigation/init-auto-highlight-symbol ()
   (require 'auto-highlight-symbol)
-  (use-package! auto-highlight-symbol
+  (use-package auto-highlight-symbol
     :defer t
     :init
     (progn
