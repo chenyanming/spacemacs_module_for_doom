@@ -180,6 +180,7 @@ used."
          (columns (plist-get props :columns))
          (timeout (plist-get props :timeout))
          (idle (plist-get props :idle))
+         (pre (plist-get props :pre))
          (entry-sexp (plist-get props :on-enter))
          (exit-sexp (plist-get props :on-exit))
          (hint (plist-get props :hint))
@@ -210,6 +211,7 @@ used."
                  :foreign-keys ,foreign-keys
                  :timeout ,timeout
                  :idle ,idle
+                 :pre ,pre
                  :body-pre ,entry-sexp
                  :before-exit ,exit-sexp)
                 ,doc)
