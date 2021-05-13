@@ -804,6 +804,7 @@ Select: _a_ _h_ _j_ _k_ _l_ _w_ _0_.._9_ Move: _H_ _J_ _K_ _L_ _r_ _R_ Split: _s
             "^^                 ")))
 
 (spacemacs|define-transient-state window
+  :on-exit (setq hydra--work-around-dedicated nil)
   :title "Window Transient State"
   :hint-is-doc t
   :dynamic-hint (spacemacs//window-ts-hint)
@@ -832,13 +833,13 @@ Select: _a_ _h_ _j_ _k_ _l_ _w_ _0_.._9_ Move: _H_ _J_ _K_ _L_ _r_ _R_ Split: _s
   ("o" other-frame)
   ("w" other-window)
   ;; Move
-  ("J" evil-window-move-very-bottom)
+  ("J" (lambda() (interactive) (setq hydra--work-around-dedicated t) (evil-window-move-very-bottom)))
   ("<S-down>" evil-window-move-very-bottom)
-  ("K" evil-window-move-very-top)
+  ("K" (lambda() (interactive) (setq hydra--work-around-dedicated t) (evil-window-move-very-top)))
   ("<S-up>" evil-window-move-very-top)
-  ("H" evil-window-move-far-left)
+  ("H" (lambda() (interactive) (setq hydra--work-around-dedicated t) (evil-window-move-far-left)) )
   ("<S-left>" evil-window-move-far-left)
-  ("L" evil-window-move-far-right)
+  ("L" (lambda() (interactive) (setq hydra--work-around-dedicated t) (evil-window-move-far-right)) )
   ("<S-right>" evil-window-move-far-right)
   ("r" spacemacs/rotate-windows-forward)
   ("R" spacemacs/rotate-windows-backward)
