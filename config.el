@@ -37,7 +37,7 @@ defer call using `spacemacs-post-user-config-hook'."
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-distribution 'doom
-   dotspacemacs-startup-banner 'cat
+   dotspacemacs-startup-banner 'official
    dotspacemacs-folding-method 'evil
    dotspacemacs-filepath (expand-file-name "config.el" doom-private-dir)
    dotspacemacs-startup-lists '((recents  . 5)
@@ -80,6 +80,7 @@ defer call using `spacemacs-post-user-config-hook'."
 
 ;; unmap the doom original key prefix
 (map! :leader
+      "a" nil
       "gg" nil
       "bN" nil
       "bN" nil
