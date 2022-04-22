@@ -371,6 +371,39 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
     (spacemacs-project/init-projectile)
     (spacemacs//ivy-hjkl-navigation dotspacemacs-editing-style)))
 
+(when (featurep! :completion vertico)
+  (load! (concat spacemacs-module-path "layer/compleseus/packages.el"))
+  (load! (concat spacemacs-module-path "layer/compleseus/config.el"))
+  (load! (concat spacemacs-module-path "layer/compleseus/funcs.el"))
+  (load! (concat spacemacs-module-path "layer/spacemacs-project/packages.el"))
+  (load! (concat spacemacs-module-path "layer/spacemacs-project/funcs.el"))
+  (load! (concat spacemacs-module-path "layer/spacemacs-completion/funcs.el"))
+
+  (map! :leader
+        "ESC" nil
+        "M-s" nil
+        )
+  (compleseus/init-consult-yasnippet )()
+  (compleseus/init-embark)
+  (compleseus/init-embark-consult)
+  (compleseus/init-orderless)
+  ;; (compleseus/init-selectrum)
+  (compleseus/init-vertico)
+  (compleseus/init-vertico-quick)
+  (compleseus/init-vertico-repeat)
+  (compleseus/init-vertico-directory)
+  (spacemacs/compleseus-wgrep-change-to-wgrep-mode)
+  (compleseus/post-init-grep)
+  (compleseus/init-wgrep)
+  ;; (compleseus/init-compleseus-spacemacs-help)
+  ;; (compleseus/pre-init-persp-mode)
+  ;; (compleseus/pre-init-auto-highlight-symbol)
+  (compleseus/post-init-imenu)
+  (compleseus/init-marginalia)
+  (compleseus/init-consult)
+  )
+
+
 ;; doom-dashboard specific setting
 (when (featurep! :ui doom-dashboard)
   (defun spacemacs/home-delete-other-windows ()
