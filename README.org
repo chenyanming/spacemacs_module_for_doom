@@ -36,6 +36,11 @@ This is the new method to enable as a private Doom module. It is the easiest way
    (window-select     ; visually switch windows
            +numbers)
    #+END_SRC
+   - Important: Please enable =hydra= in ~init.el~
+   #+BEGIN_SRC emacs-lisp
+    :ui
+    hydra
+   #+END_SRC
    - To enable the spacemacs like dashboard, comment out ~doom-dashboard~.
    - To disable default doom keybindings, delete ~+bindings~, in ~:config default~ module.
 3. Setup ~/.doom.d/config.el
