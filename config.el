@@ -401,6 +401,8 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
   (compleseus/post-init-imenu)
   (compleseus/init-marginalia)
   (compleseus/init-consult)
+  (spacemacs-project/init-projectile)
+
   )
 
 
