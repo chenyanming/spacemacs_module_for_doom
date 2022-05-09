@@ -213,7 +213,7 @@
         ("w" (lambda() (interactive) (setq hydra--work-around-dedicated t) (spacemacs/workspaces-transient-state/body)) :exit t)
         ("x" spacemacs/layouts-ts-kill)
         ("X" spacemacs/layouts-ts-kill-other :exit t))
-      (spacemacs/set-leader-keys "l" '(lambda() (interactive) (setq hydra--work-around-dedicated t) (spacemacs/layouts-transient-state/body)))
+      (spacemacs/set-leader-keys "l" (lambda() (interactive) (setq hydra--work-around-dedicated t) (spacemacs/layouts-transient-state/body)))
       ;; custom layouts
       ;; (spacemacs|define-custom-layout "@Spacemacs"
       ;;   :binding "e"
