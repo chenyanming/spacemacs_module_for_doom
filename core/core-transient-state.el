@@ -89,7 +89,7 @@ effect if called after that point."
   "Format HINT and store the result in VAR for transient state NAME."
   (declare (indent 1))
   ;; `(add-hook 'spacemacs-post-user-config-hook
-  `(add-hook 'doom-after-init-modules-hook
+  `(add-hook 'after-init-hook
              (lambda ()
                (let* ((props-var ,(spacemacs//transient-state-props-var-name
                                    name))
