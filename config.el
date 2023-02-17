@@ -113,10 +113,10 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 ;; define some simple but important keys with map! which is easier than using
 ;; spacemacs ways to define.
 (map! :leader
-      (:when (featurep! :completion ivy)
+      (:when (modulep! :completion ivy)
         :desc "M-x"                     :n "SPC" #'counsel-M-x))
 (map! :leader
-      (:when (featurep! :completion helm)
+      (:when (modulep! :completion helm)
         :desc "M-x"                     :n "SPC" #'helm-M-x))
 
 ;;; Layers
@@ -125,7 +125,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 ;; initialise layers
 
 ;; org layer
-(when (featurep! :lang org)
+(when (modulep! :lang org)
   (load! (concat spacemacs-module-path "layer/org/config.el"))
   (load! (concat spacemacs-module-path "layer/org/funcs.el"))
   (load! (concat spacemacs-module-path "layer/org/packages.el"))
@@ -159,7 +159,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 (epub/init-nov)
 
 ;; dash layer
-(when (featurep! :tools lookup +docsets)
+(when (modulep! :tools lookup +docsets)
   (load! (concat spacemacs-module-path "layer/dash/packages.el"))
   ;; (load! (concat spacemacs-module-path "layer/dash/config.el"))
   ;; (load! (concat spacemacs-module-path "layer/dash/funcs.el"))
@@ -233,7 +233,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 ;; github layer
 (load! (concat spacemacs-module-path "layer/github/funcs.el"))
 (load! (concat spacemacs-module-path "layer/github/packages.el"))
-(when (featurep! :tools magit)
+(when (modulep! :tools magit)
   (github/init-forge))
 (github/init-gist)
 (github/init-github-clone)
@@ -253,7 +253,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 (load! (concat spacemacs-module-path "layer/spacemacs-layouts/funcs.el"))
 (load! (concat spacemacs-module-path "layer/spacemacs-layouts/config.el"))
 (spacemacs-layouts/init-eyebrowse)
-(when (featurep! :ui workspaces)
+(when (modulep! :ui workspaces)
   (spacemacs-layouts/init-persp-mode))
 
 
@@ -263,12 +263,12 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 
 
 ;; git layer
-(when (featurep! :emacs vc)
+(when (modulep! :emacs vc)
   (load! (concat spacemacs-module-path "layer/git/packages.el"))
   (git/init-git-timemachine))
 
 ;; javascript layer
-(when (featurep! :lang javascript)
+(when (modulep! :lang javascript)
   (load! (concat spacemacs-module-path "layer/javascript/packages.el"))
   (load! (concat spacemacs-module-path "layer/javascript/config.el"))
   (load! (concat spacemacs-module-path "layer/javascript/funcs.el"))
@@ -283,7 +283,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 
 ;; spacemacs editing layer
 (load! (concat spacemacs-module-path "layer/spacemacs-editing/packages.el"))
-(when (featurep! :config default)
+(when (modulep! :config default)
   (spacemacs-editing/init-avy)
   (spacemacs-editing/init-expand-region)
   (spacemacs-editing/init-link-hint))
@@ -292,7 +292,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 (spacemacs-editing/init-string-inflection)
 
 ;; spacemacs evil layer
-(when (featurep! :editor evil)
+(when (modulep! :editor evil)
   (load! (concat spacemacs-module-path "layer/spacemacs-evil/config.el"))
   (load! (concat spacemacs-module-path "layer/spacemacs-evil/funcs.el"))
   (load! (concat spacemacs-module-path "layer/spacemacs-evil/packages.el"))
@@ -327,9 +327,9 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 (load! (concat spacemacs-module-path "layer/shell/config.el"))
 (load! (concat spacemacs-module-path "layer/shell/funcs.el"))
 (load! (concat spacemacs-module-path "layer/shell/packages.el"))
-(if (featurep! :term eshell)
+(if (modulep! :term eshell)
     (shell/init-eshell))
-(if (featurep! :term vterm)
+(if (modulep! :term vterm)
     (shell/init-vterm))
 
 ;; json layer
@@ -344,8 +344,8 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 
 ;; ivy layer
 ;; if default +bindings is enabled in init.el, it will not run
-(when (featurep! :completion ivy)
-  (unless (featurep! :config default +bindings)
+(when (modulep! :completion ivy)
+  (unless (modulep! :config default +bindings)
     (load! (concat spacemacs-module-path "layer/ivy/packages.el"))
     (load! (concat spacemacs-module-path "layer/ivy/config.el"))
     (load! (concat spacemacs-module-path "layer/ivy/funcs.el"))
@@ -371,7 +371,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
     (spacemacs-project/init-projectile)
     (spacemacs//ivy-hjkl-navigation dotspacemacs-editing-style)))
 
-(when (featurep! :completion vertico)
+(when (modulep! :completion vertico)
   (load! (concat spacemacs-module-path "layer/compleseus/packages.el"))
   (load! (concat spacemacs-module-path "layer/compleseus/config.el"))
   (load! (concat spacemacs-module-path "layer/compleseus/funcs.el"))
@@ -407,7 +407,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 
 
 ;; doom-dashboard specific setting
-(when (featurep! :ui doom-dashboard)
+(when (modulep! :ui doom-dashboard)
   (defun spacemacs/home-delete-other-windows ()
     "Open home Spacemacs buffer and delete other windows.
 Useful for making the home buffer the only visible buffer in the frame."
