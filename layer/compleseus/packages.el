@@ -221,7 +221,7 @@
      spacemacs/compleseus-search-projectile
      spacemacs/compleseus-search-default
      spacemacs/compleseus-search-projectile-auto
-     :preview-key (list (kbd "C-SPC") (kbd "C-M-j") (kbd "C-M-k")))
+     :preview-key (list "C-SPC" "C-M-j" "C-M-k"))
 
     ;; hide magit buffer
     (add-to-list 'consult-buffer-filter "magit.*:.*")
