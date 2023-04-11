@@ -233,7 +233,7 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 ;; github layer
 (load! (concat spacemacs-module-path "layer/github/funcs.el"))
 (load! (concat spacemacs-module-path "layer/github/packages.el"))
-(when (modulep! :tools magit)
+(when (modulep! :tools magit +forge)
   (github/init-forge))
 (github/init-gist)
 (github/init-github-clone)
