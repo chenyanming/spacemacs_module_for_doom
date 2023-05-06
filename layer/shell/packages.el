@@ -321,6 +321,20 @@
                             term-mode-hook)))
 
 (defun shell/init-vterm ()
+
+  (use-package multi-vterm
+    :defer t
+    :commands (multi-vterm)
+
+    :init
+    (progn
+      (defun multi-vterm-f (&optional buffer-name)
+        (multi-vterm))
+
+      (make-shell-pop-command "multi-vterm" multi-vterm-f)
+      (spacemacs/set-leader-keys "asl" 'spacemacs/shell-pop-multi-vterm)
+      (spacemacs/register-repl 'multi-vterm 'multi-vterm)))
+
   (use-package vterm
     :defer t
     :commands (vterm vterm-other-window)
