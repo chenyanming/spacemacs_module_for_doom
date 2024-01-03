@@ -63,7 +63,7 @@
    (ordered :initarg :ordered :initform t)
    (records :initarg :records :initform nil :type list)))
 
-(defmethod constructor :static ((mock mocker-mock) newname &rest args)
+(cl-defmethod constructor :static ((mock mocker-mock) newname &rest args)
   (let* ((obj (call-next-method))
          (recs (oref obj :records))
          (func (oref obj :function)))
@@ -74,7 +74,7 @@
           recs)
     obj))
 
-(defmethod mocker-add-record ((mock mocker-mock) &rest args)
+(cl-defmethod mocker-add-record ((mock mocker-mock) &rest args)
   (object-add-to-list mock :records
                       (let ((cls mocker-mock-default-record-cls)
                             (tmp (plist-get args :record-cls)))
@@ -87,7 +87,7 @@
                                :-sym (make-symbol "unique") args))
                       t))
 
-(defmethod mocker-fail-mock ((mock mocker-mock) args)
+(cl-defmethod mocker-fail-mock ((mock mocker-mock) args)
   (signal 'mocker-mock-error
           (list (format (concat "Unexpected call to mock `%s'"
                                 " with input `%s'")
@@ -95,7 +95,7 @@
 
 (defvar mocker-inhibit nil)
 
-(defmethod mocker-run ((mock mocker-mock) &rest args)
+(cl-defmethod mocker-run ((mock mocker-mock) &rest args)
   (if (not mocker-inhibit)
       (let* ((mocker-inhibit t)
              (rec (mocker-find-active-record mock args))
@@ -108,7 +108,7 @@
                (mocker-fail-record rec args))))
     (apply (oref mock :orig-def) args)))
 
-(defmethod mocker-find-active-record ((mock mocker-mock) args)
+(cl-defmethod mocker-find-active-record ((mock mocker-mock) args)
   (let ((first-match (lambda (pred seq)
                        (let ((x nil))
                          (while (and seq
@@ -139,7 +139,7 @@
                    (oref mock :records))))
       rec)))
 
-(defmethod mocker-verify ((mock mocker-mock))
+(cl-defmethod mocker-verify ((mock mocker-mock))
   (mapc #'(lambda (r) (when (and (oref r :-active)
                                  (< (oref r :-occurrences)
                                     (oref r :min-occur)))
@@ -163,7 +163,7 @@
    (-active :initarg :-active :initform t :protection :protected)
    (-sym :initarg :-sym)))
 
-(defmethod constructor :static ((rec mocker-record-base) newname &rest args)
+(cl-defmethod constructor :static ((rec mocker-record-base) newname &rest args)
   (let* ((obj (call-next-method))
          (occur (oref obj :occur)))
     (when occur
@@ -174,10 +174,10 @@
                              occur)))
     obj))
 
-(defmethod mocker-read-record :static ((rec mocker-record-base) spec)
+(cl-defmethod mocker-read-record :static ((rec mocker-record-base) spec)
   spec)
 
-(defmethod mocker-use-record ((rec mocker-record-base))
+(cl-defmethod mocker-use-record ((rec mocker-record-base))
   (let ((max (oref rec :max-occur))
         (n (1+ (oref rec :-occurrences))))
     (oset rec :-occurrences n)
@@ -185,21 +185,21 @@
                (= n max))
       (oset rec :-active nil))))
 
-(defmethod mocker-skip-record ((rec mocker-record-base) args)
+(cl-defmethod mocker-skip-record ((rec mocker-record-base) args)
   (if (>= (oref rec :-occurrences)
           (oref rec :min-occur))
       (oset rec :-active nil)
     (mocker-fail-record rec args)))
 
-(defmethod mocker-test-record ((rec mocker-record-base) args)
+(cl-defmethod mocker-test-record ((rec mocker-record-base) args)
   (error "not implemented in base class"))
 
-(defmethod mocker-run-record ((rec mocker-record-base) args)
+(cl-defmethod mocker-run-record ((rec mocker-record-base) args)
   (error "not implemented in base class"))
 
-(defmethod mocker-get-record-expectations ((rec mocker-record-base)))
+(cl-defmethod mocker-get-record-expectations ((rec mocker-record-base)))
 
-(defmethod mocker-fail-record ((rec mocker-record-base) args)
+(cl-defmethod mocker-fail-record ((rec mocker-record-base) args)
   (signal 'mocker-record-error
           (list (format (concat "Violated record while mocking `%s'."
                                 " Expected input like: %s, got: `%s' instead")
@@ -212,7 +212,7 @@
   ((input :initarg :input :initform nil :type list)
    (input-matcher :initarg :input-matcher :initform nil)))
 
-(defmethod constructor :static ((rec mocker-input-record) newname &rest args)
+(cl-defmethod constructor :static ((rec mocker-input-record) newname &rest args)
   (let* ((obj (call-next-method)))
     (when (or (not (slot-boundp obj :max-occur))
               (and (oref obj :max-occur)
@@ -221,7 +221,7 @@
       (oset obj :max-occur (oref obj :min-occur)))
     obj))
 
-(defmethod mocker-test-record ((rec mocker-input-record) args)
+(cl-defmethod mocker-test-record ((rec mocker-input-record) args)
   (let ((matcher (oref rec :input-matcher))
         (input (oref rec :input)))
     (cond (matcher
@@ -229,7 +229,7 @@
           (t
            (equal input args)))))
 
-(defmethod mocker-get-record-expectations ((rec mocker-input-record))
+(cl-defmethod mocker-get-record-expectations ((rec mocker-input-record))
   (format "`%s'" (or (oref rec :input-matcher) (oref rec :input))))
 
 ;;; Mock record default object
@@ -237,7 +237,7 @@
   ((output :initarg :output :initform nil)
    (output-generator :initarg :output-generator :initform nil)))
 
-(defmethod mocker-run-record ((rec mocker-record) args)
+(cl-defmethod mocker-run-record ((rec mocker-record) args)
   (let ((generator (oref rec :output-generator))
         (output (oref rec :output)))
     (cond (generator
@@ -249,7 +249,7 @@
 (defclass mocker-stub-record (mocker-record-base)
   ((output :initarg :output :initform nil)))
 
-(defmethod constructor :static ((rec mocker-stub-record) newname &rest args)
+(cl-defmethod constructor :static ((rec mocker-stub-record) newname &rest args)
   (let* ((obj (call-next-method)))
     (unless (slot-boundp obj :min-occur)
       (oset obj :min-occur 0))
@@ -257,20 +257,20 @@
       (oset obj :max-occur nil))
     obj))
 
-(defmethod mocker-test-record ((rec mocker-stub-record) args)
+(cl-defmethod mocker-test-record ((rec mocker-stub-record) args)
   t)
 
-(defmethod mocker-run-record ((rec mocker-stub-record) args)
+(cl-defmethod mocker-run-record ((rec mocker-stub-record) args)
   (oref rec :output))
 
-(defmethod mocker-get-record-expectations ((rec mocker-stub-record))
+(cl-defmethod mocker-get-record-expectations ((rec mocker-stub-record))
   "anything")
 
 ;;; Mock passthrough record
 (defclass mocker-passthrough-record (mocker-input-record)
   ())
 
-(defmethod mocker-run-record ((rec mocker-passthrough-record) args)
+(cl-defmethod mocker-run-record ((rec mocker-passthrough-record) args)
   (let* ((mock (oref rec :-mock))
          (def (oref mock :orig-def)))
     (when def
