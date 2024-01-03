@@ -9,8 +9,6 @@
 ;;
 ;;; License: GPLv3
 
-(require 'core-configuration-layer) ; for configuration-layer/package-used-p
-
 
 ;; General Persp functions
 
