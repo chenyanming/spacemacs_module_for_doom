@@ -151,8 +151,9 @@ Spacemacs use spacemacs-.*-mode-map, we here use original mode map."
 
 
 ;; pdf layer
-(load! (concat spacemacs-module-path "layer/pdf/packages.el"))
-(pdf/init-pdf-tools)
+(when (modulep! :tools pdf)
+  (load! (concat spacemacs-module-path "layer/pdf/packages.el"))
+  (pdf/init-pdf-tools))
 
 ;; epub layer
 (load! (concat spacemacs-module-path "layer/epub/packages.el"))

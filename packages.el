@@ -13,4 +13,5 @@
 (package! forge) ;; for github layer
 (package! evil-terminal-cursor-changer) ;; for spacemacs evil
 (package! eshell-prompt-extras) ;; for shell layer
-(package! pdf-tools) ;; for pdf layer
+(when (modulep! :tools pdf)
+  (package! pdf-tools)) ;; for pdf layer
